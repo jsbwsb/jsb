@@ -1,0 +1,1 @@
+Directory for static file for web page e.g: logo, backround, css
