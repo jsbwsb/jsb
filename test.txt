@@ -4,3 +4,6 @@ Test file for pythonanywhere
 Test z pycharma:)
 
 Jeszcze jedno
+
+
+Jeszcze jedno 2
