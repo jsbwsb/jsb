@@ -1,1 +1,1 @@
-author = 'Sylwia Kos jsb'
+author = 'Sylwia Kos & Beata Jakmiak-Rychlicka jsb'
