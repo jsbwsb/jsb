@@ -1,10 +1,83 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<head>
+<meta charset="UTF-8">
+<title>GENERATOR ADRESÓW</title>
+<link rel="stylesheet" href="gener.css">
 </head>
+
 <body>
+<fieldset>
+<legend>GENERATOR ADRESÓW</legend>
+
+<label for="city">Wybierz Województwo</label>
+<input type="checkbox" name="ADRES"/>
+<select name="city">
+<option value ="sydney">Wszystkie</option>
+  <option value ="sydney">Pomorskie</option>
+  <option value ="melbourne">Mazowieckie</option>
+  <option value ="cromwell">Wielkopolskie</option>
+  <option value ="queenstown">Zachodniopomorskie</option>
+</select><br>
+
+<label for="city">Wybierz Powiat</label>
+<input type="checkbox" name="ADRES"/>
+<select name="city">
+<option value ="sydney">Wszystkie</option>
+  <option value ="sydney">Gdańsk</option>
+  <option value ="melbourne">Rzeszów</option>
+  <option value ="cromwell">Łódź</option>
+  <option value ="queenstown">Kraków</option>
+</select><br>
+
+<label for="city">Wybierz Gminę</label>
+<input type="checkbox" name="ADRES"/>
+<select name="city">
+<option value ="sydney">Wszystkie</option>
+  <option value ="sydney">Gdańsk</option>
+  <option value ="melbourne">Rzeszów</option>
+  <option value ="cromwell">Kraków</option>
+  <option value ="queenstown">Wrocław</option>
+</select><br>
+
+<label for="city">Wybierz Miejscowość</label>
+<input type="checkbox" name="ADRES"/>
+<select name="city">
+<option value ="sydney">Wszystkie</option>
+  <option value ="sydney">Gdańsk</option>
+  <option value ="melbourne">Łódź</option>
+  <option value ="cromwell">Kraków</option>
+  <option value ="queenstown">Rzeszów</option>
+</select><br>
+
+</div>
+<label for="ADRES">Ulica</label>
+<input type="checkbox" name="ADRES"/><br>
+<label for="ADRES">Nr domu</label>
+<input type="checkbox" name="ADRES"/><br>
+<label for="ADRES">Kod pocztowy</label>
+<input type="checkbox" name="ADRES"/><br>
+</div>
+
+<div>
+<label for="lunch">Rezultat jako:</label><br>
+<input type="radio" name="lunch" value="pasta" /> XML
+<input type="radio" name="lunch" value="fish" /> JSON
+<input type="radio" name="lunch" value="pasta" /> CSV
+<input type="radio" name="lunch" value="fish" /> SQL
+<input type="radio" name="lunch" value="fish" /> TXT
+</div>
+
+<div>
+<label for="first_name">ILOŚĆ ADESÓW:</label><br>
+<input type="text" name="first_name" value="" maxlength="100" /><br>
+</div>
+<div>
+<input type="submit" value="GENERUJ" />
+</div>
+</fieldset>
+</form>
 
 </body>
-</html>
+
+</html> 
