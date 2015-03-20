@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Kurs django</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css">
+</head>
+ 
+<body>
+
+<div class="container" id="wrapper">
+
+    <div class="row"><!--  PASEK GORA -->
+        <div class="topbar">
+            <div class="logo pull-left">
+                <h1><a href="#"><img src="{{ STATIC_URL }}img/poziom.gif"></a></h1> <!-- Obrazek -->
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row"><!-- Menu -->
+        <div id="mainmenu" class="navbar navbar-inverse"> 
+                <div class="navbar-inner">
+                    <div>
+                        <a class="brand" href="#">CMS</a>
+                        <ul class="nav">
+                            <li class="active"><a href="index.html">Start</a></li>
+                            <li><a href="index.html">Artykuły</a></li>
+                            <li><a href="index.html">Kontakt</a></li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="row"><!-- Glowna czesc -->
+
+
+            <div class="row"><!-- glowna czesc strony -->
+
+				{% block content %}
+				{% endblock %}
+
+            </div><!--  Koniec glownej czesci -->
+
+        </div><!-- Koniec lewej kolumny -->
+
+        <div class="span3"><!-- Prawa kolumna -->
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Twoje konto</li>
+                    <li class="active"><a href="">Ustawienia profilu</a></li>
+                    <li><a href="">Powiadomienia</a></li>
+                    <li><a href="">Wyloguj</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="span3"><!-- Prawa kolumna -->
+            <img src="img/vert.jpg" alt="">
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <hr>
+        <div class="footer-wrap">
+            <p>Autorzy aplikacji web: (http://www.djangobook.com/en/2.0/index.html)</p>
+            
+        </div>
+    </div>
+
+</div>
+
+</body> 
+
+</html>
