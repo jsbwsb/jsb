@@ -1,12 +1,27 @@
 # Create your models here.
 import os
+from django.conf import settings
+
+FILENAME_FIELD = 'file_name'
 
 
-def generate_file(reg):
-    f = open('workfile', 'w')
-    f.write('This is a test\n')
+def generate_file(req):
+
+    filename = str(req.get(FILENAME_FIELD))
+
+    if filename is None or len(filename) == 0:
+        filename = 'workfile.txt'
+
+    filepath = settings.MEDIA_ROOT + os.sep + filename
+
+
+
+    f = open(filepath, 'w')
+    f.write('This is a test\n' + str(req))
     f.close()
-    return "DZIALA GENERATE"
+
+
+    return str(filename)
 
 '''
 # -*- coding: utf-8 -*-

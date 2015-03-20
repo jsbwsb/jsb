@@ -9,11 +9,13 @@
     </form>
     -->
 
-    <form action="/gen_out/" method="get">
-        <fieldset>
-<legend>GENERATOR ADRESÓW</legend>
+<form action="/gen_out/" method="get">
+    <fieldset>
+    <legend>GENERATOR ADRESÓW</legend>
+        <label for="file_name">Podaj nazwę pliku wynikowego: </label>
+        <input type="text" name="file_name">
 
-<label for="city">Wybierz Województwo</label>
+    <label for="city">Wybierz Województwo</label>
 <input type="checkbox" name="ADRES" value="woj_on"/>
 <select name="city">
 <option value ="sydney">Wszystkie</option>
