@@ -9,13 +9,13 @@ urlpatterns = patterns('',
     # url(r'^$', 'jsb.views.home', name='home'),
     # url(r'^jsb/', include('jsb.foo.urls')),
 
-    url(r'^generator/', 'generator.views.showform'),     #showing form
-    url(r'^gen_out/', 'generator.views.genout'),     #showing form
+    url(r'^generator/', 'jsb.generator.views.showform'),     #showing form
+    url(r'^gen_out/', 'jsb.generator.views.genout'),     #showing form
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', 'generator.views.showform'),
+    url(r'^$', 'jsb.generator.views.showform'),
 )

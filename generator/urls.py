@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import patterns,  url
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -14,6 +14,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^show/', 'generator.views.showform'),
-    url(r'^$', 'generator.views.showform'),
+    url(r'^show/', 'jsb.generator.views.showform'),
+    url(r'^$', 'jsb.generator.views.showform'),
 )
