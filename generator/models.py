@@ -1,4 +1,12 @@
 # Create your models here.
+import os
+
+
+def generate_file(reg):
+    f = open('workfile', 'w')
+    f.write('This is a test\n')
+    f.close()
+    return "DZIALA GENERATE"
 
 '''
 # -*- coding: utf-8 -*-
