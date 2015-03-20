@@ -1,7 +1,12 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 #from generator.models import AddressData
-# Create your views here.
+
+
+#ON SERVER
+#from jsb.generator.models import generate_file #models
+
+#LOCAL
 from generator.models import generate_file #models
 
 

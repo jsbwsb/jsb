@@ -4,8 +4,10 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+#SERVER
 #BASE_DIR = "/home/jsb/jsb"
 
+#LOCAL
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 ADMINS = (
