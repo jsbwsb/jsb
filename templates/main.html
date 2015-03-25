@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Generator danych adresowych</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+ 
+<body>
+
+<div class="container" id="wrapper">
+
+    <div class="row"><!--  PASEK GORA -->
+        <div class="topbar">
+            <div class="logo pull-left">
+                <h1><a href="#"><img src="/static/img/poziom.gif"></a></h1> <!-- Obrazek -->
+            </div>
+
+        </div>
+    </div> <!-- Logo -->
+
+    <div class="row"><!-- Menu -->
+        <div id="mainmenu" class="navbar navbar-inverse"> 
+                <div class="navbar-inner">
+                    <div>
+                        <a class="brand" href="#">ADRES</a>
+                        <ul class="nav">
+                            <li class="active"><a href="/generator/show">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="row"><!-- Glowna czesc -->
+
+
+				{% block content %}
+				{% endblock %}
+
+
+    </div><!-- glowna czesc  -->
+
+
+    <div class="row">
+        <hr>
+        <div class="footer-wrap">
+            <p>Autorzy aplikacji web: Sylwia, Beata, Joanna</p>
+            
+        </div>
+    </div> <!-- Stopka -->
+
+</div>
+
+</body> 
+
+</html>
