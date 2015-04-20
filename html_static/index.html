@@ -9,75 +9,74 @@
 <body>
 <fieldset>
 <legend>GENERATOR ADRESÓW</legend>
+<h4>Wybierz zakres danych:</h4><br>
 
-<label for="city">Wybierz Województwo</label>
-<input type="checkbox" name="ADRES"/>
+<input type="checkbox" name="ADRES" style="float: left;"/>
+<label for="city" style="width: 160px; float:left;" >Wybierz Województwo</label>
+
 <select name="city">
-<option value ="sydney">Wszystkie</option>
-  <option value ="sydney">Pomorskie</option>
-  <option value ="melbourne">Mazowieckie</option>
-  <option value ="cromwell">Wielkopolskie</option>
-  <option value ="queenstown">Zachodniopomorskie</option>
+  <option value ="miasto">Wszystkie</option>
+  <option value ="miasto">Pomorskie</option>
+  <option value ="miasto">Mazowieckie</option>
+  <option value ="miasto">Wielkopolskie</option>
+  <option value ="miasto">Zachodniopomorskie</option>
 </select><br>
 
-<label for="city">Wybierz Powiat</label>
-<input type="checkbox" name="ADRES"/>
+<input type="checkbox" name="ADRES" style="float: left;"/>
+<label for="city" style="width: 160px; float: left;" >Wybierz Powiat</label>
 <select name="city">
-<option value ="sydney">Wszystkie</option>
-  <option value ="sydney">Gdańsk</option>
-  <option value ="melbourne">Rzeszów</option>
-  <option value ="cromwell">Łódź</option>
-  <option value ="queenstown">Kraków</option>
+  <option value ="miasto">Wszystkie</option>
+  <option value ="miasto">Gdańsk</option>
+  <option value ="miasto">Rzeszów</option>
+  <option value ="miasto">Łódź</option>
+  <option value ="miasto">Kraków</option>
 </select><br>
 
-<label for="city">Wybierz Gminę</label>
-<input type="checkbox" name="ADRES"/>
+<input type="checkbox" name="ADRES" style="float: left;"/>
+<label for="city" style="width: 160px; float:left;" >Wybierz Gminę</label>
 <select name="city">
-<option value ="sydney">Wszystkie</option>
-  <option value ="sydney">Gdańsk</option>
-  <option value ="melbourne">Rzeszów</option>
-  <option value ="cromwell">Kraków</option>
-  <option value ="queenstown">Wrocław</option>
+  <option value ="miasto">Wszystkie</option>
+  <option value ="miasto">Gdańsk</option>
+  <option value ="miasto">Rzeszów</option>
+  <option value ="miasto">Kraków</option>
+  <option value ="miasto">Wrocław</option>
 </select><br>
 
-<label for="city">Wybierz Miejscowość</label>
-<input type="checkbox" name="ADRES"/>
+<input type="checkbox" name="ADRES" style="float: left;"/>
+<label for="city" style="width: 160px; float: left;" >Wybierz Miejscowość</label>
 <select name="city">
-<option value ="sydney">Wszystkie</option>
-  <option value ="sydney">Gdańsk</option>
-  <option value ="melbourne">Łódź</option>
-  <option value ="cromwell">Kraków</option>
-  <option value ="queenstown">Rzeszów</option>
+ <option value ="miasto">Wszystkie</option>
+ <option value ="miasto">Gdańsk</option>
+ <option value ="miasto">Łódź</option>
+ <option value ="miasto">Kraków</option>
+ <option value ="miasto">Rzeszów</option>
 </select><br>
 
-</div>
-<label for="ADRES">Ulica</label>
-<input type="checkbox" name="ADRES"/><br>
-<label for="ADRES">Nr domu</label>
-<input type="checkbox" name="ADRES"/><br>
-<label for="ADRES">Kod pocztowy</label>
-<input type="checkbox" name="ADRES"/><br>
+<input type="checkbox" name="ADRES" style="float: left;"/>
+<label for="ADRES" style="width: 160px; float: left;" >Ulica</label><br>
+
+<input type="checkbox" name="ADRES" style="float: left;"/>
+<label for="ADRES" style="width: 160px; float: left;" >Nr domu</label><br>
+
+<input type="checkbox" name="ADRES"  style="float: left;"/>
+<label for="ADRES" style="width: 160px; float: left;" >Kod pocztowy</label><br>
+
+<div>
+<label for="lunch" >Rezultat jako:</label><br>
+<input type="radio" name="lunch" value="plik" /> XML
+<input type="radio" name="lunch" value="plik" /> JSON
+<input type="radio" name="lunch" value="plik" /> CSV
+<input type="radio" name="lunch" value="plik" /> SQL
+<input type="radio" name="lunch" value="plik" /> TXT
 </div>
 
 <div>
-<label for="lunch">Rezultat jako:</label><br>
-<input type="radio" name="lunch" value="pasta" /> XML
-<input type="radio" name="lunch" value="fish" /> JSON
-<input type="radio" name="lunch" value="pasta" /> CSV
-<input type="radio" name="lunch" value="fish" /> SQL
-<input type="radio" name="lunch" value="fish" /> TXT
-</div>
-
-<div>
-<label for="first_name">ILOŚĆ ADESÓW:</label><br>
-<input type="text" name="first_name" value="" maxlength="100" /><br>
-</div>
-<div>
+<label for="first">Wpisz ilość adresów:</label><br>
+<input type="text" name="first" value="" maxlength="100" />
 <input type="submit" value="GENERUJ" />
 </div>
 </fieldset>
-</form>
 
 </body>
 
-</html> 
+</html>
