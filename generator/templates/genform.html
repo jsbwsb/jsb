@@ -2,85 +2,87 @@
 
 {% block content %}
 
-    <!--
-    <form action="/gen_out/" method="get">
-        <input type="text" name="q">
-        <input type="submit" value="Search">
-    </form>
-    -->
 
-<form action="/gen_out/" method="get">
-    <fieldset>
-    <legend>GENERATOR ADRESÓW</legend>
-        <label for="file_name">Podaj nazwę pliku wynikowego: </label>
-        <input type="text" name="file_name">
+{% if step == 1  %}
+<form action="/step2" method="get">
+   <fieldset>
 
-    <label for="city">Wybierz Województwo</label>
-<input type="checkbox" name="ADRES" value="woj_on"/>
-<select name="city">
-<option value ="sydney">Wszystkie</option>
-  <option value ="sydney">Pomorskie</option>
-  <option value ="melbourne">Mazowieckie</option>
-  <option value ="cromwell">Wielkopolskie</option>
-  <option value ="queenstown">Zachodniopomorskie</option>
-</select><br>
+        <div>
+            <h2><label for="woj">Wybierz Województwo:</label></h2>
 
-<label for="city">Wybierz Powiat</label>
-<input type="checkbox" name="ADRES" value="pow_on"/>
-<select name="city">
-<option value ="sydney">Wszystkie</option>
-  <option value ="sydney">Gdańsk</option>
-  <option value ="melbourne">Rzeszów</option>
-  <option value ="cromwell">Łódź</option>
-  <option value ="queenstown">Kraków</option>
-</select><br>
+            <input type="checkbox" name="woj_on_off" value="woj_on"/>
 
-<label for="city">Wybierz Gminę</label>
-<input type="checkbox" name="ADRES" value="gm_on"/>
-<select name="city">
-<option value ="sydney">Wszystkie</option>
-  <option value ="sydney">Gdańsk</option>
-  <option value ="melbourne">Rzeszów</option>
-  <option value ="cromwell">Kraków</option>
-  <option value ="queenstown">Wrocław</option>
-</select><br>
+            <select multiple name="woj">
+                <option value ="all">Wszystkie</option>
+                {% for w in woj %}
+                    <option value = "{{ w }}">{{ w }}</option>
+                {% endfor %}
+            </select><br>
 
-<label for="city">Wybierz Miejscowość</label>
-<input type="checkbox" name="ADRES" value="miasto_on"/>
-<select name="city">
-<option value ="sydney">Wszystkie</option>
-  <option value ="sydney">Gdańsk</option>
-  <option value ="melbourne">Łódź</option>
-  <option value ="cromwell">Kraków</option>
-  <option value ="queenstown">Rzeszów</option>
-</select><br>
+            <h2><label for="woj_order">Pozycja w pliku wynikowym:</label></h2>
+            <input type="text" name="woj_order" value="1" />
 
-</div>
-<label for="ADRES">Ulica</label>
-<input type="checkbox" name="ADRES"/><br>
-<label for="ADRES">Nr domu</label>
-<input type="checkbox" name="ADRES"/><br>
-<label for="ADRES">Kod pocztowy</label>
-<input type="checkbox" name="ADRES"/><br>
-</div>
+        </div>
 
-<div>
-<label for="lunch">Rezultat jako:</label><br>
-<input type="radio" name="lunch" value="pasta" /> XML
-<input type="radio" name="lunch" value="fish" /> JSON
-<input type="radio" name="lunch" value="pasta" /> CSV
-<input type="radio" name="lunch" value="fish" /> SQL
-<input type="radio" name="lunch" value="fish" /> TXT
-</div>
+        <div>
+            <input type="submit" value="DALEJ" />
+        </div>
 
-<div>
-<label for="first_name">ILOŚĆ ADESÓW:</label><br>
-<input type="text" name="first_name" value="" maxlength="100" /><br>
-</div>
-<div>
-<input type="submit" value="GENERUJ" />
-</div>
-</fieldset>
+    </fieldset>
 </form>
+
+{% endif %}
+
+{% if step == 2  %}
+
+        <div>
+            <h2>Wybrano województwa:
+                {% for w in req.1 %}
+                    {%if forloop.last %}
+                        {{ w }}
+                    {% else %}
+                        {{ w }},
+                    {% endif %}
+                {% endfor %}
+            </h2>
+        </div>
+
+        <hr/>
+
+        <form action="/step3" method="get">
+        <fieldset>
+
+            <div>
+                <h2><label for="woj">Wybierz Powiat:</label></h2>
+
+                <input type="hidden" name="options" value="{{ req }}" />
+                <input type="checkbox" name="pw_on_off" value="pow_on"/>
+
+                <select multiple name="pow">
+                    <option value ="all">Wszystkie</option>
+                    {% for p in pow %}
+                        <option value = "{{ p }}">{{ p }}</option>
+                    {% endfor %}
+                </select><br>
+
+                <h2><label for="pow_order">Pozycja w pliku wynikowym:</label></h2>
+                <input type="text" name="pow_order" value="2" />
+
+            </div>
+
+            <div>
+                <input type="submit" value="DALEJ" />
+            </div>
+
+        </fieldset>
+        </form>
+
+
+{% endif %}
+
+{% if step == 3  %}
+<h4>{{req}}</h4>
+{% endif %}
+
 
 {% endblock %}
