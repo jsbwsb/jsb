@@ -5,11 +5,13 @@ import os
 from django.conf import settings
 from django.db.models import CharField, Model
 
-FILENAME_FIELD = 'file_name'
 
+
+FILENAME_FIELD = 'file_name'
+WOJ_FIELD = 'woj'
 
 #Tabela wojewodztwa
-class WojSet(Model):
+class AdresySet(Model):
     name = CharField(max_length=60, verbose_name="Województwo")
 
     def __str__(self):
@@ -18,6 +20,62 @@ class WojSet(Model):
     def __unicode__(self):
         return str(self.name)
 
+    @staticmethod
+    def choose_woj():
+
+        woj_set=[ 'Lodzkie' , 'Podkarpackie', 'Malopolskie']
+
+        return woj_set
+
+    @staticmethod
+    def choose_pow(req):
+
+        woj = req[1][0]
+        if woj == 'Wszystkie':
+            return [ 'piotrkowski' , 'lodzki', 'rzeszowski' , 'lancucki', 'jaroslawski', 'gorlicki']
+        pow_set= {'Lodzkie': [ 'piotrkowski' , 'lodzki'],
+                  'Podkarpackie': [ 'rzeszowski' , 'lancucki', 'jaroslawski'],
+                  'Malopolskie': ['gorlicki']
+                  }
+
+
+        return pow_set[woj]
+
+    @staticmethod
+    def choose_gm(req):
+
+        gm_set=[ 'rzeszowski' , 'gorlicki', 'piotrkowski']
+
+        return gm_set
+
+def get_option_value(req, step):
+
+    req_dict = dict(req)
+
+    ret = []
+
+    if step == 2:
+        #wojewodzctwo ON/OFF
+        ret = [-1]
+
+        if req_dict.has_key('woj_on_off') and req_dict.has_key('woj_order'):
+            if req_dict['woj_order'][0].isdigit():
+                ret = [int(req_dict['woj_order'][0])]
+
+        if req_dict.has_key('woj'):
+            tmp = req_dict['woj']
+
+            if 'all' in tmp:
+                ret.append(['Wszystkie'])
+            else:
+                ret.append(tmp)
+        else:
+            ret.append(['Wszystkie'])
+
+    elif step == 3:
+        ret = req
+
+    return ret
 
 
 def generate_file(req):
@@ -37,22 +95,3 @@ def generate_file(req):
 
 
     return str(filename)
-
-'''
-# -*- coding: utf-8 -*-
-from django.db import models
-
-
-
-class AddressData(models.Model):
-    postal_code = models.CharField(max_length=6, verbose_name="Kod pocztowy")
-
-    def __str__(self):
-        return str(self.postal_code)
-
-    def __unicode__(self):
-        return str(self.postal_code)
-
-    def generate_file(self, request):
-        return "TEST"
-'''
