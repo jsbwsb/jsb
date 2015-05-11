@@ -12,7 +12,13 @@ WOJ_FIELD = 'woj'
 
 #Tabela wojewodztwa
 class AdresySet(Model):
-    name = CharField(max_length=60, verbose_name="Województwo")
+    kod = CharField(max_length=6, verbose_name="Kod pocztowy")
+    miejscowosc = CharField(max_length=200, verbose_name="Miejscowość")
+    ulica = CharField(max_length=200, verbose_name="ulica", null=True, blank=True)
+    numery = CharField(max_length=100, verbose_name="numery", null=True, blank=True)
+    gmina = CharField(max_length=100, verbose_name="gmina")
+    powiat = CharField(max_length=100, verbose_name="powiat")
+    wojewodztwo = CharField(max_length=60, verbose_name="Województwo")
 
     def __str__(self):
         return str(self.name)
