@@ -47,9 +47,7 @@ else:
         line = file.readline()
         line_list = line.split("|")
 
-        print line_list
         if line_list[WOJ_FIELD_INDEX] not in woj:
-            print line_list[WOJ_FIELD_INDEX]
             woj.append(line_list[WOJ_FIELD_INDEX])
             cursor.execute("INSERT INTO generator_wojset (nazwa) VALUES ('%s'); " % line_list[WOJ_FIELD_INDEX])
 
