@@ -31,7 +31,7 @@ class AdresySet(Model):
 
         woj=[]
         #woj_set = list(AdresySet.objects.raw('SELECT id, wojewodztwo FROM generator_adresyset;'))
-        woj_set = AdresySet.objects.values_list('wojewodztwo', flat=True)
+        woj_set = AdresySet.objects.values_list('wojewodztwo', flat=True).distinct()
         #for obj in query_set:
         #    woj.append(obj.wojewodztwo)
         #woj
