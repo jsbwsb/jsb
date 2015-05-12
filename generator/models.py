@@ -17,7 +17,7 @@ class WojSet(Model):
     @staticmethod
     def choose_woj():
 
-        woj_set = WojSet.objects.values_list('nazwa', flat=True).distinct()
+        woj_set = WojSet.objects.values.distinct()
         return woj_set
 
 
@@ -41,6 +41,9 @@ class WojSet(Model):
         gm_set=[ 'rzeszowski' , 'gorlicki', 'piotrkowski']
 
         return gm_set
+
+
+
 
 
 def get_option_value(req, step):
