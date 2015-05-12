@@ -31,7 +31,7 @@ class AdresySet(Model):
 
         #woj_set=[ 'Lodzkie' , 'Podkarpackie', 'Malopolskie']
         woj_set = list(AdresySet.objects.all())
-        #woj_set = [str(type(woj_set)),"DUPA"]
+        woj_set.append("DUPA")
         return woj_set
 
     @staticmethod
