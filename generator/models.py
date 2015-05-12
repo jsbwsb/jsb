@@ -29,10 +29,12 @@ class AdresySet(Model):
     @staticmethod
     def choose_woj():
 
-        woj_set=[]
-        query_set = list(AdresySet.objects.raw('SELECT id, wojewodztwo FROM generator_adresyset;'))
-        for obj in query_set:
-            woj_set.append(obj.wojewodztwo)
+        woj=[]
+        #woj_set = list(AdresySet.objects.raw('SELECT id, wojewodztwo FROM generator_adresyset;'))
+        woj_set = AdresySet.objects.objects.values_list('wojewodztwo', flat=True)
+        #for obj in query_set:
+        #    woj.append(obj.wojewodztwo)
+        #woj
 
         return woj_set
 
