@@ -4,9 +4,12 @@ __author__ = 'Sylwia'
 import mysql.connector
 from mysql.connector import errorcode
 
+WOJ_FIELD_INDEX = 7
+
 #openning data file
+
 DATA_FILE = 'przerobione_pna.txt'
-NUMBER_OF_ROWS = 10
+NUMBER_OF_ROWS = 30
 
 file =  open(DATA_FILE, 'r')
 
@@ -46,10 +49,13 @@ else:
         line_list = line.split("|")
 
         print line_list
-        #if line_list[7] not in woj:
-        #    cursor.execute("INSERT INTO generator_adresyset (kod, miejscowosc, ulica, numery, gmina, powiat, wojewodztwo) "
-        #               "VALUES ('%s','%s','%s','%s','%s','%s','%s'); " % tuple(line_list))
-        #db.commit()
+        if line_list[WOJ_FIELD_INDEX] not in woj:
+            print line_list[WOJ_FIELD_INDEX]
+            woj.append(line_list[WOJ_FIELD_INDEX])
+            cursor.execute("INSERT INTO generator_wojset (nazwa) VALUES ('%s'); " % tuple(line_list[WOJ_FIELD_INDEX]))
+
+            db.commit()
+
         i += 1
 
     db.close()
