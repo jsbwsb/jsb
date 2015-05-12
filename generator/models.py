@@ -29,8 +29,9 @@ class AdresySet(Model):
     @staticmethod
     def choose_woj():
 
-        woj_set=[ 'Lodzkie' , 'Podkarpackie', 'Malopolskie']
-
+        #woj_set=[ 'Lodzkie' , 'Podkarpackie', 'Malopolskie']
+        woj_set = AdresySet.objects.all()
+        woj_set = woj_set[0]
         return woj_set
 
     @staticmethod
