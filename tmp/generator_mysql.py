@@ -33,21 +33,23 @@ else:
     cursor = db.cursor()
 
     #delete all existing data
-    cursor.execute("DELETE FROM generator_adresyset;")
+    cursor.execute("DELETE FROM generator_wojset;")
     db.commit()
 
     #row counter
     i = 0
 
+    woj = []
+
     while i < NUMBER_OF_ROWS:
         line = file.readline()
         line_list = line.split("|")
 
-        #print line_list
-
-        cursor.execute("INSERT INTO generator_adresyset (kod, miejscowosc, ulica, numery, gmina, powiat, wojewodztwo) "
-                       "VALUES ('%s','%s','%s','%s','%s','%s','%s'); " % tuple(line_list))
-        db.commit()
+        print line_list
+        #if line_list[7] not in woj:
+        #    cursor.execute("INSERT INTO generator_adresyset (kod, miejscowosc, ulica, numery, gmina, powiat, wojewodztwo) "
+        #               "VALUES ('%s','%s','%s','%s','%s','%s','%s'); " % tuple(line_list))
+        #db.commit()
         i += 1
 
     db.close()
