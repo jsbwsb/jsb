@@ -11,32 +11,15 @@ FILENAME_FIELD = 'file_name'
 WOJ_FIELD = 'woj'
 
 #Tabela wojewodztwa
-class AdresySet(Model):
-    kod = CharField(max_length=6, verbose_name="Kod pocztowy")
-    miejscowosc = CharField(max_length=200, verbose_name="Miejscowość")
-    ulica = CharField(max_length=200, verbose_name="ulica", null=True, blank=True)
-    numery = CharField(max_length=100, verbose_name="numery", null=True, blank=True)
-    gmina = CharField(max_length=100, verbose_name="gmina")
-    powiat = CharField(max_length=100, verbose_name="powiat")
-    wojewodztwo = CharField(max_length=60, verbose_name="Województwo")
-
-    #def __str__(self):
-    #    return self.kod
-
-    #def __unicode__(self):
-    #    return self.kod
+class WojSet(Model):
+    nazwa = CharField(max_length=60, verbose_name="Nazwa województwa")
 
     @staticmethod
     def choose_woj():
 
-        woj=[]
-        #woj_set = list(AdresySet.objects.raw('SELECT id, wojewodztwo FROM generator_adresyset;'))
-        woj_set = AdresySet.objects.values_list('wojewodztwo', flat=True).distinct()
-        #for obj in query_set:
-        #    woj.append(obj.wojewodztwo)
-        #woj
-
+        woj_set = WojSet.objects.values_list('nazwa', flat=True).distinct()
         return woj_set
+
 
     @staticmethod
     def choose_pow(req):
@@ -58,6 +41,7 @@ class AdresySet(Model):
         gm_set=[ 'rzeszowski' , 'gorlicki', 'piotrkowski']
 
         return gm_set
+
 
 def get_option_value(req, step):
 
