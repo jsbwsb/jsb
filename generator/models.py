@@ -30,7 +30,7 @@ class AdresySet(Model):
     def choose_woj():
 
         #woj_set=[ 'Lodzkie' , 'Podkarpackie', 'Malopolskie']
-        woj_set = list(AdresySet.objects.all())
+        woj_set = list(AdresySet.objects.values())
         woj_set.append("DUPA")
         return woj_set
 
