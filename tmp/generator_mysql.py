@@ -52,7 +52,7 @@ else:
         if line_list[WOJ_FIELD_INDEX] not in woj:
             print line_list[WOJ_FIELD_INDEX]
             woj.append(line_list[WOJ_FIELD_INDEX])
-            cursor.execute("INSERT INTO generator_wojset (nazwa) VALUES ('%s'); " % tuple(line_list[WOJ_FIELD_INDEX]))
+            cursor.execute("INSERT INTO generator_wojset (nazwa) VALUES ('%s'); " % line_list[WOJ_FIELD_INDEX])
 
             db.commit()
 
