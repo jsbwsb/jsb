@@ -1,17 +1,16 @@
-__author__ = 'Sylwia'
-#mysql --port=3306 --host=mysql.server --user=jsb --password=Testerki@1
+__author__ = 'Sylwia, Beata, Joanna'
 
 import mysql.connector
 from mysql.connector import errorcode
 
+#addresses data file
+DATA_FILE = 'przerobione_pna.txt'
+NUMBER_OF_ROWS = 50
+
+#indexes of the fields in data file
 WOJ_FIELD_INDEX = 6
 
-#openning data file
-
-DATA_FILE = 'przerobione_pna.txt'
-NUMBER_OF_ROWS = 30
-
-file =  open(DATA_FILE, 'r')
+file = open(DATA_FILE, 'r')
 
 #connecting to database
 try:
