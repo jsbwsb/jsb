@@ -17,7 +17,7 @@ class WojSet(Model):
     @staticmethod
     def choose_woj():
 
-        woj_set = WojSet.objects.values().distinct()
+        woj_set = WojSet.objects.values_list().distinct()
         return woj_set
 
 
