@@ -4,7 +4,7 @@ __author__ = 'Sylwia'
 import mysql.connector
 from mysql.connector import errorcode
 
-WOJ_FIELD_INDEX = 7
+WOJ_FIELD_INDEX = 6
 
 #openning data file
 
