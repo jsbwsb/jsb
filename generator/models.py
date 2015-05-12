@@ -21,10 +21,10 @@ class AdresySet(Model):
     wojewodztwo = CharField(max_length=60, verbose_name="Województwo")
 
     def __str__(self):
-        return str(self.name)
+        return "Adresy"
 
     def __unicode__(self):
-        return str(self.name)
+        return "Adresy"
 
     @staticmethod
     def choose_woj():
