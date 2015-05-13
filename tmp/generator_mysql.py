@@ -51,8 +51,9 @@ else:
 
         #inserting data to wojset
         if not woj.has_key(line_list[WOJ_FIELD_INDEX]):
+            print str(line_list[WOJ_FIELD_INDEX]).strip()
             cursor.execute("INSERT INTO generator_wojset (nazwa) VALUES ('%s'); "
-                           % line_list[WOJ_FIELD_INDEX].strip())
+                           % str(line_list[WOJ_FIELD_INDEX]).strip())
 
             db.commit()
 
@@ -69,7 +70,7 @@ else:
         #inserting data to powset
         if not pow.has_key(line_list[POW_FIELD_INDEX]):
             cursor.execute("INSERT INTO generator_powset (nazwa, woj_id) VALUES ('%s', %d); "
-                           % (line_list[POW_FIELD_INDEX].strip(), wojID))
+                           % (str(line_list[POW_FIELD_INDEX]).strip(), wojID))
 
             db.commit()
 
