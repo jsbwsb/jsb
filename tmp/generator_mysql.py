@@ -57,9 +57,8 @@ else:
 
             db.commit()
 
-            cursor.execute("SELECT id from generator_wojset where nazwa = '%s'; " % line_list[WOJ_FIELD_INDEX])
-
-            print result
+            cursor.execute("SELECT id from generator_wojset where nazwa = '%s'; "
+                           % str(line_list[WOJ_FIELD_INDEX]).strip())
 
             result = cursor.fetchall()
 
@@ -76,7 +75,8 @@ else:
 
             db.commit()
 
-            cursor.execute("SELECT id from generator_powset where nazwa = '%s'; " % line_list[POW_FIELD_INDEX])
+            cursor.execute("SELECT id from generator_powset where nazwa = '%s'; "
+                           % line_list[POW_FIELD_INDEX].strip())
 
             result = cursor.fetchall()
 
