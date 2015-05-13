@@ -76,9 +76,15 @@ def get_option_value(req, step):
     elif step == 3:
         ret = [-1]
 
+
         if req_dict.has_key('options'):
 
-            ret = req_dict['options']
+
+            options_list = list(req_dict['options'])
+        else:
+            options_list = [[-1, ['Wszystkie']]]
+
+        ret = options_list
 
     elif step == 4:
         ret = req
