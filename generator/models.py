@@ -32,7 +32,7 @@ class WojSet(Model):
 
 class PowSet(Model):
     nazwa = CharField(max_length=60, verbose_name="Nazwa powiatu")
-    woj = ForeignKey(WojSet)
+    woj = ForeignKey(WojSet) #wojid
 
     @staticmethod
     def choose_pow(req):
@@ -42,7 +42,9 @@ class PowSet(Model):
         if woj == 'Wszystkie':
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
-            pow_set = req[1]
+
+            woj_ids = WojSet.objects.values_list('id').filter(nazwa=woj)
+            pow_set = woj_ids
 
         '''
             return [ 'piotrkowski' , 'lodzki', 'rzeszowski' , 'lancucki', 'jaroslawski', 'gorlicki']
