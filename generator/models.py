@@ -41,6 +41,9 @@ class PowSet(Model):
         pow_set = ["test"]
         if woj == 'Wszystkie':
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
+        else:
+            pow_set = req[1]
+
         '''
             return [ 'piotrkowski' , 'lodzki', 'rzeszowski' , 'lancucki', 'jaroslawski', 'gorlicki']
         #pow_set= {'Lodzkie': [ 'piotrkowski' , 'lodzki'],
