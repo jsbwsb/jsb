@@ -3,7 +3,7 @@
 # Create your models here.
 import os
 from django.conf import settings
-from django.db.models import CharField, PositiveIntegerField, Model
+from django.db.models import CharField, ForeignKey, PositiveIntegerField, Model
 
 
 
@@ -32,7 +32,7 @@ class WojSet(Model):
 
 class PowSet(Model):
     nazwa = CharField(max_length=60, verbose_name="Nazwa powiatu")
-    wojID = PositiveIntegerField(verbose_name="ID województwa")
+    wojID = ForeignKey(WojSet)
 
     @staticmethod
     def choose_pow(req):
