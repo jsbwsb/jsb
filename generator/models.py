@@ -25,15 +25,18 @@ class WojSet(Model):
     def choose_pow(req):
 
         woj = req[1][0]
+        pow_set = ["test"]
         if woj == 'Wszystkie':
+            pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
+        '''
             return [ 'piotrkowski' , 'lodzki', 'rzeszowski' , 'lancucki', 'jaroslawski', 'gorlicki']
-        pow_set= {'Lodzkie': [ 'piotrkowski' , 'lodzki'],
+        #pow_set= {'Lodzkie': [ 'piotrkowski' , 'lodzki'],
                   'Podkarpackie': [ 'rzeszowski' , 'lancucki', 'jaroslawski'],
                   'Malopolskie': ['gorlicki']
                   }
+        '''
 
-
-        return pow_set[woj]
+        return pow_set
 
     @staticmethod
     def choose_gm(req):
