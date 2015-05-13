@@ -20,9 +20,6 @@ class WojSet(Model):
         woj_set = WojSet.objects.values_list('nazwa', flat=True).distinct()
         return woj_set
 
-
-
-
     @staticmethod
     def choose_gm(req):
 
@@ -47,7 +44,6 @@ class PowSet(Model):
             woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
 
             pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
-
 
         return pow_set
 
@@ -78,6 +74,13 @@ def get_option_value(req, step):
             ret.append(['Wszystkie'])
 
     elif step == 3:
+        ret = [-1]
+
+        if req_dict.has_key('options'):
+
+            ret = req_dict['options']
+
+    elif step == 4:
         ret = req
 
     return ret
