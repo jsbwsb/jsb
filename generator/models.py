@@ -46,7 +46,7 @@ class PowSet(Model):
             wojs = list(req[1])
             woj_ids = WojSet.objects.filter(nazwa__in=wojs)
 
-            pow_set = [woj_ids, wojs, _.query]
+            pow_set = [woj_ids, wojs]
 
         '''
             return [ 'piotrkowski' , 'lodzki', 'rzeszowski' , 'lancucki', 'jaroslawski', 'gorlicki']
