@@ -9,6 +9,7 @@ NUMBER_OF_ROWS = 50
 
 #indexes of the fields in data file
 WOJ_FIELD_INDEX = 6
+POW_FIELD_INDEX = 5
 
 file = open(DATA_FILE, 'r')
 
@@ -42,11 +43,13 @@ else:
     i = 0
 
     woj = {}
+    pow = {}
 
     while i < NUMBER_OF_ROWS:
         line = file.readline()
         line_list = line.split("|")
 
+        #inserting data to wojset
         if not woj.has_key(line_list[WOJ_FIELD_INDEX]):
             cursor.execute("INSERT INTO generator_wojset (nazwa) VALUES ('%s'); " % line_list[WOJ_FIELD_INDEX])
 
@@ -60,10 +63,29 @@ else:
 
             woj[line_list[WOJ_FIELD_INDEX]] = int(result[0][0])
 
+        wojID = woj[line_list[WOJ_FIELD_INDEX]]
+
+        #inserting data to powset
+        if not pow.has_key(line_list[POW_FIELD_INDEX]):
+            cursor.execute("INSERT INTO generator_powset (nazwa, wojID) VALUES ('%s', %d); "
+                           % (line_list[POW_FIELD_INDEX], wojID))
+
+            db.commit()
+
+            cursor.execute("SELECT id from generator_powset where nazwa = '%s'; " % line_list[POW_FIELD_INDEX])
+
+            result = cursor.fetchall()
+
+            print int(result[0][0])
+
+            pow[line_list[POW_FIELD_INDEX]] = int(result[0][0])
+
+
 
 
         i += 1
 
     print woj
+    print pow
 
     db.close()
