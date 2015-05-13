@@ -37,15 +37,16 @@ class PowSet(Model):
     @staticmethod
     def choose_pow(req):
 
-        woj = list(req[1])
+        woj = req[1][0]
         pow_set = ["test"]
         if woj == 'Wszystkie':
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
 
-            woj_ids = WojSet.objects.filter(nazwa__in = woj).values_list(id)
+            wojs = list(req[1])
+            woj_ids = WojSet.objects.filter(nazwa__in = wojs).values_list(id)
             #woj_ids = woj
-            pow_set = [woj_ids, woj]
+            pow_set = [woj_ids, wojs]
 
         '''
             return [ 'piotrkowski' , 'lodzki', 'rzeszowski' , 'lancucki', 'jaroslawski', 'gorlicki']
