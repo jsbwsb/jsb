@@ -64,4 +64,6 @@ else:
 
         i += 1
 
+    print woj
+
     db.close()
