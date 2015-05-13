@@ -3,7 +3,7 @@
 # Create your models here.
 import os
 from django.conf import settings
-from django.db.models import CharField, Model
+from django.db.models import CharField, PositiveIntegerField, Model
 
 
 
@@ -43,7 +43,22 @@ class WojSet(Model):
         return gm_set
 
 class PowSet(Model):
-    nazwa = CharField(max_length=60, verbose_name="Nazwa województwa")
+    nazwa = CharField(max_length=60, verbose_name="Nazwa powiatu")
+    wojID = PositiveIntegerField(verbose_name="ID województwa")
+
+    @staticmethod
+    def choose_pow(req):
+
+        woj = req[1][0]
+        if woj == 'Wszystkie':
+            return [ 'piotrkowski' , 'lodzki', 'rzeszowski' , 'lancucki', 'jaroslawski', 'gorlicki']
+        pow_set= {'Lodzkie': [ 'piotrkowski' , 'lodzki'],
+                  'Podkarpackie': [ 'rzeszowski' , 'lancucki', 'jaroslawski'],
+                  'Malopolskie': ['gorlicki']
+                  }
+
+
+        return pow_set[woj]
 
 
 
