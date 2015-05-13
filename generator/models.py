@@ -43,7 +43,7 @@ class PowSet(Model):
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
 
-            woj_ids = PowSet.objects.select_related(woj).values_list() #get(nazwa = "pomorskie")#.filter(nazwa = woj).values_list('id')
+            woj_ids = PowSet.objects.select_related(woj)
             pow_set = [woj_ids, woj]
 
         '''
