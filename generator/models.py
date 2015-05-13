@@ -32,7 +32,7 @@ class WojSet(Model):
 
 class PowSet(Model):
     nazwa = CharField(max_length=60, verbose_name="Nazwa powiatu")
-    wojID = ForeignKey(WojSet)
+    woj = ForeignKey(WojSet)
 
     @staticmethod
     def choose_pow(req):
