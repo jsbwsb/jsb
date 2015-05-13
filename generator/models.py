@@ -43,8 +43,8 @@ class PowSet(Model):
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
 
-            woj_ids = WojSet.objects.filter(nazwa = woj).values_list('id')
-            pow_set = woj_ids
+            woj_ids = WojSet.objects.all().filter(nazwa = woj).values_list('id')
+            pow_set = [woj_ids, woj]
 
         '''
             return [ 'piotrkowski' , 'lodzki', 'rzeszowski' , 'lancucki', 'jaroslawski', 'gorlicki']
