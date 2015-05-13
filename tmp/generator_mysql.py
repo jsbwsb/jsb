@@ -56,9 +56,9 @@ else:
 
             result = cursor.fetchall()
 
-            print int(result[0])
+            print int(result[0][0])
 
-            woj[line_list[WOJ_FIELD_INDEX]] = int(result[0])
+            woj[line_list[WOJ_FIELD_INDEX]] = int(result[0][0])
 
 
 
