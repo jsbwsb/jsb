@@ -84,7 +84,7 @@ def get_option_value(req, step):
         else:
             options_list = [[-1, ['Wszystkie']]]
 
-        ret = options_list
+        ret = options_list.append([-1,['Wszystkie']])
 
     elif step == 4:
         ret = req
