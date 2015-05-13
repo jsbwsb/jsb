@@ -67,7 +67,7 @@ else:
 
         #inserting data to powset
         if not pow.has_key(line_list[POW_FIELD_INDEX]):
-            cursor.execute("INSERT INTO generator_powset (nazwa, wojID) VALUES ('%s', %d); "
+            cursor.execute("INSERT INTO generator_powset (nazwa, woj_id) VALUES ('%s', %d); "
                            % (line_list[POW_FIELD_INDEX], wojID))
 
             db.commit()
