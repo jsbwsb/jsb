@@ -44,8 +44,8 @@ class PowSet(Model):
         else:
 
             wojs = list(req[1])
-            woj_ids = WojSet.objects.filter(nazwa__in = wojs).values_list(id)
-            #woj_ids = woj
+            #woj_ids = WojSet.objects.filter(nazwa__in = wojs).values_list(id)
+            woj_ids = woj
             pow_set = [woj_ids, wojs]
 
         '''
