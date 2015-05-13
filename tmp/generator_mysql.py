@@ -41,17 +41,26 @@ else:
     #row counter
     i = 0
 
-    woj = []
+    woj = {}
 
     while i < NUMBER_OF_ROWS:
         line = file.readline()
         line_list = line.split("|")
 
-        if line_list[WOJ_FIELD_INDEX] not in woj:
-            woj.append(line_list[WOJ_FIELD_INDEX])
+        if not woj.has_key(line_list[WOJ_FIELD_INDEX]):
             cursor.execute("INSERT INTO generator_wojset (nazwa) VALUES ('%s'); " % line_list[WOJ_FIELD_INDEX])
 
             db.commit()
+
+            cursor.execute("SELECT id from generator_wojset where nazwa = '%s'; " % line_list[WOJ_FIELD_INDEX])
+
+            result = cursor.fetchall()
+
+            print int(result[0])
+
+            woj[line_list[WOJ_FIELD_INDEX]] = int(result[0])
+
+
 
         i += 1
 
