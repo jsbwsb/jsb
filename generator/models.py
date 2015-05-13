@@ -58,7 +58,7 @@ class PowSet(Model):
                   }
 
 
-        return pow_set[woj]
+        return ["DUPA", "DUPA2"]#pow_set[woj]
 
 
 
