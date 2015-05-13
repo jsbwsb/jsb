@@ -59,6 +59,8 @@ else:
 
             cursor.execute("SELECT id from generator_wojset where nazwa = '%s'; " % line_list[WOJ_FIELD_INDEX])
 
+            print result
+
             result = cursor.fetchall()
 
             print int(result[0][0])
