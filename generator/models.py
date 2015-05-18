@@ -19,6 +19,9 @@ class WojSet(Model):
 
         woj_set = WojSet.objects.values_list('nazwa', flat=True).distinct()
         return woj_set
+    @staticmethod
+    def choose_gm(req):
+        return []
 
 class PowSet(Model):
     nazwa = CharField(max_length=60, verbose_name="Nazwa powiatu")
