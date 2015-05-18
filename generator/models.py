@@ -43,6 +43,28 @@ class PowSet(Model):
 
         return pow_set
 
+
+def convert_to_unicode(word):
+
+    loop = True
+
+    while loop:
+
+        for i in range(len(word)):
+            if word[i] == 'u' and i+4 < len(word):
+                to_rem = word[i: i+5]
+                charcode = to_rem[1:5]
+
+                if charcode.isdigit():
+                    print i
+                    if i+5 == len(word):
+
+                        loop = False
+                    word = word.replace(to_rem, unichr(int(charcode, 16)))
+                    break
+    return word
+
+
 def str_to_list(strlist):
     ret = []
 
@@ -61,7 +83,7 @@ def str_to_list(strlist):
                 pom.append(int(w))
         else:
             nazwa = w[2:len(w)-1]
-            pom2.append(nazwa.replace("u0142", unichr(0x142)))
+            pom2.append(convert_to_unicode(nazwa))
 
     if len(pom) > 0:
         pom.append(pom2)
