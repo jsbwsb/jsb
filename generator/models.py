@@ -60,7 +60,8 @@ def str_to_list(strlist):
             else:
                 pom.append(int(w))
         else:
-            pom2.append(w[2:len(w)-1])
+            nazwa = w[2:len(w)-1]
+            pom2.append(nazwa.replace("u0142", unichr(0x142)))
 
     if len(pom) > 0:
         pom.append(pom2)
