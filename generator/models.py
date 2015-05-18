@@ -98,7 +98,7 @@ def get_option_value(req, step):
             ppom.append('Wszystkie')
 
 
-        ret = ppom
+        ret = options_list.append(ppom)
 
     elif step == 4:
         ret = req
