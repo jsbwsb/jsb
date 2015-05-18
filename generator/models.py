@@ -64,7 +64,7 @@ def str_to_list(strlist):
             else:
                 pom.append(int(w))
         else:
-            pom2.append(w)
+            pom2.append(w[2:len(w)-1])
 
     if len(pom) > 0:
         pom.append(pom2)
@@ -73,7 +73,7 @@ def str_to_list(strlist):
         else:
             ret = pom
 
-    return slist
+    return ret
 
 def get_option_value(req, step):
 
