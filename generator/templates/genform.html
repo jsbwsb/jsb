@@ -81,7 +81,17 @@
 {% endif %}
 
 {% if step == 3  %}
-<h4>{{req}}</h4>
+        <div>
+            <h2>Wybrano województwa:
+                {% for w in req.1 %}
+                    {%if forloop.last %}
+                        {{ w }}
+                    {% else %}
+                        {{ w }},
+                    {% endif %}
+                {% endfor %}
+            </h2>
+        </div>
 {% endif %}
 
 {% if step == 4  %}
