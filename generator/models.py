@@ -57,11 +57,13 @@ def convert_to_unicode(word):
 
                 if charcode.isdigit():
                     print i
-                    if i+5 == len(word):
+                    if i+5 >= len(word):
 
                         loop = False
                     word = word.replace(to_rem, unichr(int(charcode, 16)))
                     break
+        if i >= len(word):
+            loop = False
     return word
 
 
