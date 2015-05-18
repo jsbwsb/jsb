@@ -62,9 +62,9 @@ def str_to_list(strlist):
                 pom = []
                 pom2 = []
             else:
-                pom.append(int(w[2:len(w)-1]))
+                pom.append(int(w))
         else:
-            pom2.append(w)
+            pom2.append(w[2:len(w)-1])
 
     if len(pom) > 0:
         pom.append(pom2)
