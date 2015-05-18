@@ -64,7 +64,7 @@ def str_to_list(strlist):
             else:
                 pom.append(int(w))
         else:
-            pom2.append(str(w))
+            pom2.append(w)
 
     if len(pom) > 0:
         pom.append(pom2)
