@@ -48,7 +48,7 @@ def str_to_list(strlist):
 
     pom = []
     pom2 = []
-    slist = strlist.replace('[','').replace(']','').replace(' ','').replace("\\\\","\\").split(',')
+    slist = strlist.replace('[','').replace(']','').replace(' ','').split(',')
 
     for w in slist:
         if w.isdigit():
@@ -60,7 +60,7 @@ def str_to_list(strlist):
             else:
                 pom.append(int(w))
         else:
-            pom2.append(w[2:len(w)-1])
+            pom2.append(unicode(w[2:len(w)-1]))
 
     if len(pom) > 0:
         pom.append(pom2)
