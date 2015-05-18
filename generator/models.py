@@ -85,7 +85,7 @@ def get_option_value(req, step):
         ppom=[-1]
         if req_dict.has_key('pow_on_off') and req_dict.has_key('pow_order'):
             if req_dict['pow_order'][0].isdigit():
-                ppom = [int(req_dict['woj_order'][0])]
+                ppom = [int(req_dict['pow_order'][0])]
         '''
         if req_dict.has_key('pow'):
             tmp = req_dict['pow']
