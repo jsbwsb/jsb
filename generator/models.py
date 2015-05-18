@@ -20,13 +20,6 @@ class WojSet(Model):
         woj_set = WojSet.objects.values_list('nazwa', flat=True).distinct()
         return woj_set
 
-    @staticmethod
-    def choose_gm(req):
-
-        gm_set=[ 'rzeszowski' , 'gorlicki', 'piotrkowski']
-
-        return gm_set
-
 class PowSet(Model):
     nazwa = CharField(max_length=60, verbose_name="Nazwa powiatu")
     woj = ForeignKey(WojSet) #wojid
@@ -52,7 +45,7 @@ def str_to_list(strlist):
 
     pom = []
     pom2 = []
-    slist = strlist.replace('[','').replace(']','').replace(' ','').split(',')
+    slist = strlist.replace('[','').replace(']','').replace(' ','').replace("\\\\","\\").split(',')
 
     for w in slist:
         if w.isdigit():
