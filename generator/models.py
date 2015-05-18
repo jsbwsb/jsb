@@ -94,6 +94,7 @@ def get_option_value(req, step):
                 ret.append(tmp)
         else:
             ret.append(['Wszystkie'])
+        ret = req
 
     elif step == 3:
         ret = [-1]
