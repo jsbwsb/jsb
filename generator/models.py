@@ -2,6 +2,7 @@
 
 # Create your models here.
 import os
+import re
 from django.conf import settings
 from django.db.models import CharField, ForeignKey, PositiveIntegerField, Model
 
@@ -46,24 +47,20 @@ class PowSet(Model):
 
 def convert_to_unicode(word):
 
-    loop = True
+    to_rem = []
 
-    while loop:
+    for i in range(len(word)):
+        if word[i] == 'u' and i+4 < len(word):
+            to_rem_pom = word[i: i+5]
+            charcode = to_rem_pom[1:5]
 
-        for i in range(len(word)):
-            if word[i] == 'u' and i+4 < len(word):
-                to_rem = word[i: i+5]
-                charcode = to_rem[1:5]
+            matchObj = re.match( r'[A-Fa-f0-9]{4}', charcode, re.M | re.I)
 
-                if charcode.isdigit():
-                    print i
-                    if i+5 >= len(word):
+            if matchObj:
+                to_rem.append(to_rem_pom)
 
-                        loop = False
-                    word = word.replace(to_rem, unichr(int(charcode, 16)))
-                    break
-        if i >= len(word):
-            loop = False
+    for rem in to_rem:
+        word = word.replace(rem, unichr(int(rem[1:5], 16)))
     return word
 
 
