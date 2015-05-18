@@ -67,8 +67,11 @@ def str_to_list(strlist):
             pom2.append(w)
 
     if len(pom) > 0:
-        ret.append(pom)
-
+        pom.append(pom2)
+        if len(ret) > 0:
+            ret.append(pom)
+        else:
+            ret = pom
 
     return ret
 
