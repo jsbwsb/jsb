@@ -29,7 +29,7 @@ class PowSet(Model):
 
     @staticmethod
     def choose_pow(req):
-
+        '''
         woj = req[1][0]
         pow_set = ["test"]
         if woj == 'Wszystkie':
@@ -40,8 +40,9 @@ class PowSet(Model):
             woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
 
             pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
+        '''
 
-        return pow_set
+        return []#pow_set
 
 def str_to_list(strlist):
     ret = []
