@@ -83,7 +83,7 @@
 {% if step == 3  %}
         <div>
             <h2>Wybrano województwa:
-                {% for w in req.1.1 %}
+                {% for w in req.0.1 %}
                     {%if forloop.last %}
                         {{ w }}
                     {% else %}
