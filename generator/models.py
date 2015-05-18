@@ -48,6 +48,28 @@ class PowSet(Model):
         return pow_set
 
 def str_to_list(strlist):
+    ret = []
+
+    pom = []
+    pom2 = []
+    stlist = strlist.replace('[','').replace(']','').split(',')
+
+    for w in strlist:
+        if w.isdigit():
+            if len(pom) > 0:
+                pom.append(pom2)
+                ret.append(pom)
+                pom = []
+                pom2 = []
+            else:
+                pom.append(int(w))
+        else:
+            pom2.append(w)
+
+    if len(pom) > 0:
+        ret.append(pom)
+
+
     return strlist.replace('[','').replace(']','').split(',')
 
 def get_option_value(req, step):
