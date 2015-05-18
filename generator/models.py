@@ -98,7 +98,7 @@ def get_option_value(req, step):
             ppom.append(['Wszystkie'])
 
 
-        ret = options_list
+        ret = req_dict
 
     elif step == 4:
         ret = req
