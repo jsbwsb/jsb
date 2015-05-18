@@ -85,7 +85,7 @@ def str_to_list(strlist):
                 pom.append(int(w))
         else:
             nazwa = w[2:len(w)-1]
-            pom2.append(convert_to_unicode(nazwa))
+            pom2.append(nazwa)#convert_to_unicode(nazwa))
 
     if len(pom) > 0:
         pom.append(pom2)
