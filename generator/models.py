@@ -47,7 +47,8 @@ class PowSet(Model):
 
         return pow_set
 
-
+def str_to_list(strlist):
+    return strlist.split(',')
 
 def get_option_value(req, step):
 
@@ -78,7 +79,7 @@ def get_option_value(req, step):
 
         #wojewodztwa
         if req_dict.has_key('options'):
-            options_list = req_dict['options']
+            options_list = str_to_list(req_dict['options'][0])
         else:
             options_list = [-1, ['Wszystkie']]
 
@@ -125,3 +126,4 @@ def generate_file(req):
 
 
     return str(filename)
+
