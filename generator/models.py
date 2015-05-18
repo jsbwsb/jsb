@@ -29,7 +29,7 @@ class PowSet(Model):
 
     @staticmethod
     def choose_pow(req):
-        '''
+
         woj = req[1][0]
         pow_set = ["test"]
         if woj == 'Wszystkie':
@@ -40,16 +40,15 @@ class PowSet(Model):
             woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
 
             pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
-        '''
 
-        return ['DUPA']#pow_set
+        return pow_set
 
 def str_to_list(strlist):
     ret = []
 
     pom = []
     pom2 = []
-    slist = strlist.replace('[','').replace(']','').replace(' ','').split(',')
+    slist = strlist.replace('[','').replace(']','').replace(' ','').replace("\\\\","\\").split(',')
 
     for w in slist:
         if w.isdigit():
@@ -61,7 +60,7 @@ def str_to_list(strlist):
             else:
                 pom.append(int(w))
         else:
-            pom2.append(unicode(w[2:len(w)-1]))
+            pom2.append(w[2:len(w)-1])
 
     if len(pom) > 0:
         pom.append(pom2)
@@ -95,14 +94,13 @@ def get_option_value(req, step):
                 ret.append(tmp)
         else:
             ret.append(['Wszystkie'])
-        ret = req
 
     elif step == 3:
         ret = [-1]
 
         #wojewodztwa
         if req_dict.has_key('options'):
-            options_list = req_dict['options'][0]#str_to_list(req_dict['options'][0])
+            options_list = str_to_list(req_dict['options'][0])
         else:
             options_list = [-1, ['Wszystkie']]
 
