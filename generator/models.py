@@ -52,9 +52,9 @@ def str_to_list(strlist):
 
     pom = []
     pom2 = []
-    strlist = strlist.replace('[','').replace(']','').split(',')
+    slist = strlist.replace('[','').replace(']','').split(',')
 
-    for w in strlist:
+    for w in slist:
         if w.isdigit():
             if len(pom) > 0:
                 pom.append(pom2)
@@ -70,7 +70,7 @@ def str_to_list(strlist):
         ret.append(pom)
 
 
-    return strlist.replace('[','').replace(']','').split(',')
+    return ret
 
 def get_option_value(req, step):
 
