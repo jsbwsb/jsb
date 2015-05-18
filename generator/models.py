@@ -78,9 +78,9 @@ def get_option_value(req, step):
 
         #wojewodztwa
         if req_dict.has_key('options'):
-            options_list = req_dict['options']
+            options_list = req_dict['options'].split(',')
         else:
-            options_list = "[-1, ['Wszystkie']]"
+            options_list = [-1, ['Wszystkie']]
 
         data_list = [options_list]
 
