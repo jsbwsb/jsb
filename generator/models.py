@@ -42,7 +42,7 @@ class PowSet(Model):
             pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
         '''
 
-        return []#pow_set
+        return ['DUPA']#pow_set
 
 def str_to_list(strlist):
     ret = []
