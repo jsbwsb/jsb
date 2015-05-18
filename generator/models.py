@@ -52,7 +52,7 @@ def str_to_list(strlist):
 
     pom = []
     pom2 = []
-    stlist = strlist.replace('[','').replace(']','').split(',')
+    strlist = strlist.replace('[','').replace(']','').split(',')
 
     for w in strlist:
         if w.isdigit():
