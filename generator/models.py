@@ -48,7 +48,7 @@ class PowSet(Model):
         return pow_set
 
 def str_to_list(strlist):
-    return strlist.split(',')
+    return strlist.replace('[','').replace(']','').split(',')
 
 def get_option_value(req, step):
 
