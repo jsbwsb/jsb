@@ -223,7 +223,17 @@ def get_option_value(req, step):
         ret = data_list
 
     elif step == 4:
-        ret = req
+
+        #wojewodztwa i powiaty
+        if 'options' in req_dict:
+            options_list = str_to_list(req_dict['options'][0])
+
+            data_list = [options_list]
+        else:
+
+            data_list = [[-1, [u'Wszystkie']], [-1, [u'Wszystkie']]]
+
+        ret = data_list
 
     return ret
 
