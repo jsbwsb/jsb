@@ -72,6 +72,7 @@ class MiejSet(Model):
     @staticmethod
     def choose_miej(req):
         '''
+
         pows = req[1][1]
 
         if pows[0] == u'Wszystkie':
