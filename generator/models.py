@@ -48,7 +48,7 @@ class GmSet(Model):
     @staticmethod
     def choose_gm(req):
 
-        gm_set = []
+        gm_set=[]
         '''
         pow = req[1][1][0]
 
@@ -62,8 +62,6 @@ class GmSet(Model):
 
             #pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
         '''
-
-
         return gm_set
 
 
@@ -171,7 +169,7 @@ def get_option_value(req, step):
         data_list.append(ppom)
 
 
-        ret = req_dict['options']#data_list
+        ret = req_dict['options'][0]#data_list
 
     elif step == 4:
         ret = req
