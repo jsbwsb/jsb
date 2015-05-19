@@ -66,7 +66,7 @@ class GmSet(Model):
         return gm_set
 
 class MiejSet(Model):
-    nazwa = CharField(max_length=60, verbose_name="Nazwa Miejscowosci")
+    nazwa = CharField(max_length=60, verbose_name="Nazwa miejscowosci")
     gm = ForeignKey(GmSet) #gmid
 
     @staticmethod
@@ -90,6 +90,31 @@ class MiejSet(Model):
         '''
         return req
 
+class AdresSet(Model):
+    ulica = CharField(max_length=100, verbose_name="Nazwa ulicy")
+    kod = CharField(max_length=6, verbose_name="Kod pocztowy")
+    miej = ForeignKey(MiejSet) #miejid
+
+    @staticmethod
+    def choose_adres(req):
+        '''
+
+        pows = req[1][1]
+
+        if pows[0] == u'Wszystkie':
+            wojs = req[0][1]
+
+            if wojs[0] == u'Wszystkie':
+                gm_set = GmSet.objects.values_list('nazwa', flat=True).distinct()
+            else:
+                woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
+                pow_ids = PowSet.objects.filter(woj__in=woj_ids).values_list('id', flat=True)
+                gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
+        else:
+            pow_ids = PowSet.objects.filter(nazwa__in=pows).values_list('id', flat=True)
+            gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
+        '''
+        return req
 
 def convert_to_unicode(word):
 
