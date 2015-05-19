@@ -94,7 +94,7 @@
         </div>
         <hr/>
         <div>
-            <h2>Wybrano powiat:
+            <h2>Wybrano powiaty:
                 {% for p in req.1.1 %}
                     {%if forloop.last %}
                         {{ p }}
@@ -137,6 +137,42 @@
 {% endif %}
 
 {% if step == 4  %}
+        <div>
+            <h2>Wybrano województwa:
+                {% for w in req.0.1 %}
+                    {%if forloop.last %}
+                        {{ w }}
+                    {% else %}
+                        {{ w }},
+                    {% endif %}
+                {% endfor %}
+            </h2>
+        </div>
+        <hr/>
+        <div>
+            <h2>Wybrano powiaty:
+                {% for p in req.1.1 %}
+                    {%if forloop.last %}
+                        {{ p }}
+                    {% else %}
+                        {{ p }},
+                    {% endif %}
+                {% endfor %}
+            </h2>
+        </div>
+        <div>
+            <h2>Wybrano gminy:
+                {% for g in req.2.1 %}
+                    {%if forloop.last %}
+                        {{ g }}
+                    {% else %}
+                        {{ g }},
+                    {% endif %}
+                {% endfor %}
+            </h2>
+        </div>
+
+
 <h4>STEP 4 {{req}}</h4>
 {% endif %}
 
