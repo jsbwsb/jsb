@@ -37,6 +37,7 @@ else:
     cursor = db.cursor()
 
     #delete all existing data
+    cursor.execute("DELETE FROM generator_gmset;")
     cursor.execute("DELETE FROM generator_powset;")
     cursor.execute("DELETE FROM generator_wojset;")
     db.commit()
