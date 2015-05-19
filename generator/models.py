@@ -73,9 +73,9 @@ class MiejSet(Model):
     def choose_miej(req):
 
 
-        gm = req[2][1]
+        gms = req[2][1]
 
-        if gm[0] == u'Wszystkie':
+        if gms[0] == u'Wszystkie':
             pow = req[1][1]
 
             if pow[0] == u'Wszystkie':
@@ -96,11 +96,10 @@ class MiejSet(Model):
                 gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
                 '''
         else:
-            '''
-            pow_ids = PowSet.objects.filter(nazwa__in=pows).values_list('id', flat=True)
-            m_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
-            '''
-            m_set = ['do zrobienia_gmina']
+
+            gm_ids = GmSet.objects.filter(nazwa__in=gms).values_list('id', flat=True)
+            m_set = MiejSet.objects.filter(pow__in=gm_ids).values_list('nazwa', flat=True)
+
 
         return m_set
 
