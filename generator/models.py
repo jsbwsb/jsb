@@ -139,14 +139,14 @@ def get_option_value(req, step):
 
         #wojewodztwa
         if 'options' in req_dict:
-            options_list = [1,['DUPA']]
+            options_list = [-1, ['Wszystkie']]
             #options_list = str_to_list(req_dict['options'][0])
         else:
             options_list = [-1, ['Wszystkie']]
 
         data_list = [options_list]
 
-        '''
+
         ppom=[-1]
         if req_dict.has_key('pow_on_off') and req_dict.has_key('pow_order'):
             if req_dict['pow_order'][0].isdigit():
@@ -163,7 +163,7 @@ def get_option_value(req, step):
             ppom.append(['Wszystkie'])
 
         data_list.append(ppom)
-        '''
+
 
         ret = data_list
 
