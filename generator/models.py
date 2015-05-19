@@ -176,7 +176,6 @@ def get_option_value(req, step):
 
     return ret
 
-
 def generate_file(req):
 
     filename = str(req.get(FILENAME_FIELD))
