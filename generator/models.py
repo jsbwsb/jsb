@@ -57,7 +57,8 @@ class GmSet(Model):
                 gm_set = GmSet.objects.values_list('nazwa', flat=True).distinct()
             else:
                 woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
-                gm_set = woj_ids
+                pow_ids = PowSet.objects.filter(woj__in=woj_ids).values_list('id', flat=True)
+                gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
         else:
             gm_set = ["Inne"]
             #wojs = list(req[1])
