@@ -144,7 +144,6 @@ else:
 
             db.commit()
 
-
         i += 1
 
     db.close()
