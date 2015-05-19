@@ -71,24 +71,38 @@ class MiejSet(Model):
 
     @staticmethod
     def choose_miej(req):
-        '''
 
-        pows = req[1][1]
 
-        if pows[0] == u'Wszystkie':
-            wojs = req[0][1]
+        gm = req[2][1]
 
-            if wojs[0] == u'Wszystkie':
-                gm_set = GmSet.objects.values_list('nazwa', flat=True).distinct()
+        if gm[0] == u'Wszystkie':
+            pow = req[1][1]
+
+            if pow[0] == u'Wszystkie':
+                woj = req[0][1]
+
+                if woj[0] == u'Wszystkie':
+                    m_set = MiejSet.objects.values_list('nazwa', flat=True).distinct()
+                else:
+                    m_set = ['do zrobienia_woj']
+
+
+
             else:
+                m_set = ['do zrobienia_pow']
+                '''
                 woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
                 pow_ids = PowSet.objects.filter(woj__in=woj_ids).values_list('id', flat=True)
                 gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
+                '''
         else:
+            '''
             pow_ids = PowSet.objects.filter(nazwa__in=pows).values_list('id', flat=True)
-            gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
-        '''
-        return req
+            m_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
+            '''
+            m_set = ['do zrobienia_gmina']
+
+        return m_set
 
 class AdresSet(Model):
     ulica = CharField(max_length=100, verbose_name="Nazwa ulicy")
