@@ -62,6 +62,8 @@ class GmSet(Model):
 
             #pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
         '''
+
+
         return gm_set
 
 
