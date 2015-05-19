@@ -48,11 +48,9 @@ class GmSet(Model):
     @staticmethod
     def choose_gm(req):
 
-        gm_set=[]
-        '''
         pow = req[1][1][0]
 
-        if pow == 'Wszystkie':
+        if pow == u'Wszystkie':
             wojs = req[0][1]
             gm_set = wojs#PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
@@ -61,7 +59,7 @@ class GmSet(Model):
             #woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
 
             #pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
-        '''
+
         return gm_set
 
 
