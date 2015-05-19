@@ -145,6 +145,7 @@ def get_option_value(req, step):
 
         data_list = [options_list]
 
+        '''
         ppom=[-1]
         if req_dict.has_key('pow_on_off') and req_dict.has_key('pow_order'):
             if req_dict['pow_order'][0].isdigit():
@@ -161,7 +162,9 @@ def get_option_value(req, step):
             ppom.append(['Wszystkie'])
 
         data_list.append(ppom)
-        ret = req #data_list
+        '''
+
+        ret = data_list
 
     elif step == 4:
         ret = req
