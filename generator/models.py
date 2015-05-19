@@ -139,8 +139,8 @@ def get_option_value(req, step):
 
         #wojewodztwa
         if 'options' in req_dict:
-            options_list = [-1, ['Wszystkie']]
-            #options_list = str_to_list(req_dict['options'][0])
+            #options_list = [-1, ['Wszystkie']]
+            options_list = str_to_list(req_dict['options'][0])
         else:
             options_list = [-1, ['Wszystkie']]
 
