@@ -10,6 +10,7 @@ NUMBER_OF_ROWS = 50
 #indexes of the fields in data file
 WOJ_FIELD_INDEX = 6
 POW_FIELD_INDEX = 5
+GM_FIELD_INDEX = 4
 
 file = open(DATA_FILE, 'r')
 
@@ -44,6 +45,7 @@ else:
 
     woj = {}
     pow = {}
+    gm = {}
 
     while i < NUMBER_OF_ROWS:
         line = file.readline()
@@ -62,7 +64,7 @@ else:
 
             result = cursor.fetchall()
 
-            print int(result[0][0])
+            print "WOJID: %d" % int(result[0][0])
 
             woj[line_list[WOJ_FIELD_INDEX]] = int(result[0][0])
 
@@ -80,9 +82,27 @@ else:
 
             result = cursor.fetchall()
 
-            print int(result[0][0])
+            print "POWID: %d" % int(result[0][0])
 
             pow[line_list[POW_FIELD_INDEX]] = int(result[0][0])
+
+        powID = woj[line_list[POW_FIELD_INDEX]]
+
+        #inserting data to gmset
+        if not gm.has_key(line_list[GM_FIELD_INDEX]):
+            cursor.execute("INSERT INTO generator_gmset (nazwa, pow_id) VALUES ('%s', %d); "
+                           % (str(line_list[POW_FIELD_INDEX]).strip(), powID))
+
+            db.commit()
+
+            cursor.execute("SELECT id from generator_powset where nazwa = '%s'; "
+                           % line_list[GM_FIELD_INDEX].strip())
+
+            result = cursor.fetchall()
+
+            print "GMID: %d" % int(result[0][0])
+
+            gm[line_list[GM_FIELD_INDEX]] = int(result[0][0])
 
 
 
