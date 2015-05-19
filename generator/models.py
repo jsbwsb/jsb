@@ -51,9 +51,9 @@ class GmSet(Model):
         pow = req[1][1][0]
 
         if pow == u'Wszystkie':
-            wojs = req[0][1][0]
+            wojs = req[0][1]
 
-            if wojs == u'Wszystkie':
+            if wojs[0] == u'Wszystkie':
                 gm_set = GmSet.objects.values_list('nazwa', flat=True).distinct()
             else:
                 woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
