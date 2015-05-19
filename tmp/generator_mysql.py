@@ -145,11 +145,6 @@ else:
             db.commit()
 
 
-
-
         i += 1
-
-    print woj
-    print pow
 
     db.close()
