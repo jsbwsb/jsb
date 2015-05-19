@@ -111,7 +111,7 @@ def str_to_list(strlist):
         else:
             ret = pom
 
-    return ret
+    return strlist
 
 
 
