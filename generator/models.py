@@ -20,9 +20,6 @@ class WojSet(Model):
 
         woj_set = WojSet.objects.values_list('nazwa', flat=True).distinct()
         return woj_set
-    @staticmethod
-    def choose_gm(req):
-        return []
 
 class PowSet(Model):
     nazwa = CharField(max_length=60, verbose_name="Nazwa powiatu")
@@ -51,7 +48,7 @@ class GmSet(Model):
     @staticmethod
     def choose_gm(req):
         '''
-        pow = req[1][0]
+        woj = req[1][0]
         pow_set = ["test"]
         if woj == 'Wszystkie':
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
