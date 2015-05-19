@@ -147,7 +147,7 @@ def str_to_list(strlist):
             if len(pom) > 0:
                 pom.append(pom2)
                 ret.append(pom)
-                pom = []
+                pom = [w]
                 pom2 = []
             else:
                 pom.append(int(w))
@@ -228,7 +228,7 @@ def get_option_value(req, step):
         if 'options' in req_dict:
             data_list = []
             data_list.append(str_to_list(req_dict['options'][0]))
-            data_list.append(str_to_list(req_dict['options'][1]))
+            #data_list.append(str_to_list(req_dict['options'][1]))
 
         else:
 
