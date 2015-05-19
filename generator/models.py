@@ -226,8 +226,9 @@ def get_option_value(req, step):
 
         #wojewodztwa i powiaty
         if 'options' in req_dict:
-            data_list = []
-            data_list.append(str_to_list(req_dict['options'][0]))
+            #data_list = []
+            #data_list.append(str_to_list(req_dict['options'][0]))
+            data_list = str_to_list(req_dict['options'][0])
 
         else:
 
