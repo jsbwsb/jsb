@@ -165,7 +165,7 @@ def get_option_value(req, step):
         data_list.append(ppom)
         '''
 
-        ret = data_list
+        ret = req_dict
 
     elif step == 4:
         ret = req
