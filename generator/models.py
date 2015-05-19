@@ -44,6 +44,26 @@ class PowSet(Model):
 
         return pow_set
 
+class GmSet(Model):
+    nazwa = CharField(max_length=60, verbose_name="Nazwa gminy")
+    pow = ForeignKey(PowSet) #wojid
+
+    @staticmethod
+    def choose_gm(req):
+        '''
+        woj = req[1][0]
+        pow_set = ["test"]
+        if woj == 'Wszystkie':
+            pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
+        else:
+
+            wojs = list(req[1])
+            woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
+
+            pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
+        '''
+        return req
+
 
 def convert_to_unicode(word):
 
