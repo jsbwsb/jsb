@@ -105,6 +105,34 @@
             </h2>
         </div>
 
+        <form action="/step4" method="get">
+        <fieldset>
+
+            <div>
+                <h2><label for="gm">Wybierz Gminę:</label></h2>
+
+                <input type="hidden" name="options" value="{{ req }}" />
+                <input type="checkbox" name="gm_on_off" value="gm_on"/>
+
+                <select multiple name="gm">
+                    <option value ="all">Wszystkie</option>
+                    {% for g in gm %}
+                        <option value = "{{ g }}">{{ g }}</option>
+                    {% endfor %}
+                </select><br>
+
+                <h2><label for="gm_order">Pozycja w pliku wynikowym:</label></h2>
+                <input type="text" name="gm_order" value="3" />
+
+            </div>
+
+            <div>
+                <input type="submit" value="DALEJ" />
+            </div>
+
+        </fieldset>
+        </form>
+<hr/>
 <h4>STEP 3{{req}}</h4>
 {% endif %}
 
