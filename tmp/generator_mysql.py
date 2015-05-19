@@ -86,7 +86,7 @@ else:
 
             pow[line_list[POW_FIELD_INDEX]] = int(result[0][0])
 
-        powID = woj[line_list[POW_FIELD_INDEX]]
+        powID = pow[line_list[POW_FIELD_INDEX]]
 
         #inserting data to gmset
         if not gm.has_key(line_list[GM_FIELD_INDEX]):
@@ -104,7 +104,7 @@ else:
 
             gm[line_list[GM_FIELD_INDEX]] = int(result[0][0])
 
-
+        gmID = gm[line_list[GM_FIELD_INDEX]]
 
 
         i += 1
