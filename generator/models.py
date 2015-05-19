@@ -177,7 +177,7 @@ def get_option_value(req, step):
         ret = [-1]
 
         if req_dict.has_key('woj_on_off') and req_dict.has_key('woj_order'):
-            if req_dict['woj_order'][0].isdigit():
+            if req_dict['woj_order'][0].lstrip("-+").isdigit():
                 ret = [int(req_dict['woj_order'][0])]
 
         if req_dict.has_key('woj'):
@@ -204,7 +204,7 @@ def get_option_value(req, step):
 
         ppom=[-1]
         if req_dict.has_key('pow_on_off') and req_dict.has_key('pow_order'):
-            if req_dict['pow_order'][0].isdigit():
+            if req_dict['pow_order'][0].lstrip("-+").isdigit():
                 ppom = [int(req_dict['pow_order'][0])]
 
         if req_dict.has_key('pow'):
@@ -228,11 +228,27 @@ def get_option_value(req, step):
         if 'options' in req_dict:
             data_list = []
             data_list.append(str_to_list(req_dict['options'][0]))
-            #data_list.append(str_to_list(req_dict['options'][1]))
 
         else:
 
             data_list = [[-1, [u'Wszystkie']], [-1, [u'Wszystkie']]]
+
+        gpom=[-1]
+        if req_dict.has_key('gm_on_off') and req_dict.has_key('gm_order'):
+            if req_dict['gm_order'][0].lstrip("-+").isdigit():
+                gpom = [int(req_dict['gm_order'][0])]
+
+        if req_dict.has_key('gm'):
+            tmp = req_dict['gm']
+
+            if 'all' in tmp:
+                gpom.append([u'Wszystkie'])
+            else:
+                gpom.append(tmp)
+        else:
+            gpom.append([u'Wszystkie'])
+
+        data_list.append(gpom)
 
         ret = data_list
 
