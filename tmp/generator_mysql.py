@@ -96,7 +96,7 @@ else:
 
             db.commit()
 
-            cursor.execute("SELECT id from generator_powset where nazwa = '%s'; "
+            cursor.execute("SELECT id from generator_gmset where nazwa = '%s'; "
                            % line_list[GM_FIELD_INDEX].strip())
 
             result = cursor.fetchall()
