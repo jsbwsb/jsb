@@ -95,11 +95,11 @@
         <hr/>
         <div>
             <h2>Wybrano powiat:
-                {% for w in req.1.1 %}
+                {% for p in req.1.1 %}
                     {%if forloop.last %}
-                        {{ w }}
+                        {{ p }}
                     {% else %}
-                        {{ w }},
+                        {{ p }},
                     {% endif %}
                 {% endfor %}
             </h2>
