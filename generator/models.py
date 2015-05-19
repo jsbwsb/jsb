@@ -48,9 +48,9 @@ class GmSet(Model):
     @staticmethod
     def choose_gm(req):
 
-        pow = req[1][1][0]
+        pows = req[1][1]
 
-        if pow == u'Wszystkie':
+        if pows[0] == u'Wszystkie':
             wojs = req[0][1]
 
             if wojs[0] == u'Wszystkie':
@@ -60,11 +60,8 @@ class GmSet(Model):
                 pow_ids = PowSet.objects.filter(woj__in=woj_ids).values_list('id', flat=True)
                 gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
         else:
-            gm_set = ["Inne"]
-            #wojs = list(req[1])
-            #woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
-
-            #pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
+            pow_ids = WojSet.objects.filter(nazwa__in=pows).values_list('id', flat=True)
+            gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
 
         return gm_set
 
