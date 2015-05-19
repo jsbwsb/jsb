@@ -51,12 +51,12 @@ class GmSet(Model):
         pow = req[1][1][0]
 
         if pow == u'Wszystkie':
-            wojs = req[0][1]
+            wojs = req[0][1][0]
 
             if wojs == u'Wszystkie':
                 gm_set = GmSet.objects.values_list('nazwa', flat=True).distinct()
             else:
-                gm_set = ["chosen"]
+                gm_set = wojs
         else:
             gm_set = ["Inne"]
             #wojs = list(req[1])
