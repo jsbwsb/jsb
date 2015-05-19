@@ -52,7 +52,11 @@ class GmSet(Model):
 
         if pow == u'Wszystkie':
             wojs = req[0][1]
-            gm_set = wojs#PowSet.objects.values_list('nazwa', flat=True).distinct()
+
+            if wojs == u'Wszystkie':
+                gm_set = GmSet.objects.values_list('nazwa', flat=True).distinct()
+            else:
+                gm_set = ["chosen"]
         else:
             gm_set = ["Inne"]
             #wojs = list(req[1])
