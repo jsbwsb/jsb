@@ -48,10 +48,12 @@ class GmSet(Model):
     @staticmethod
     def choose_gm(req):
 
+
         pow = req[1][1][0]
 
         if pow == 'Wszystkie':
-            gm_set = ["wSZYSTKIE"]#PowSet.objects.values_list('nazwa', flat=True).distinct()
+            wojs = req[0][1]
+            gm_set = wojs#PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
             gm_set = ["Inne"]
             #wojs = list(req[1])
