@@ -253,6 +253,9 @@ def get_option_value(req, step):
 
         ret = data_list
 
+    elif step == 5:
+        ret = req_dict
+
     return ret
 
 def generate_file(req):
