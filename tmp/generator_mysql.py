@@ -11,6 +11,7 @@ NUMBER_OF_ROWS = 50
 WOJ_FIELD_INDEX = 6
 POW_FIELD_INDEX = 5
 GM_FIELD_INDEX = 4
+MIEJ_FIELD_INDEX = 1
 
 file = open(DATA_FILE, 'r')
 
@@ -37,6 +38,8 @@ else:
     cursor = db.cursor()
 
     #delete all existing data
+    cursor.execute("DELETE FROM generator_adresset;")
+    cursor.execute("DELETE FROM generator_miejset;")
     cursor.execute("DELETE FROM generator_gmset;")
     cursor.execute("DELETE FROM generator_powset;")
     cursor.execute("DELETE FROM generator_wojset;")
@@ -48,6 +51,8 @@ else:
     woj = {}
     pow = {}
     gm = {}
+    miej = {}
+    adres = {}
 
     while i < NUMBER_OF_ROWS:
         line = file.readline()
@@ -107,6 +112,24 @@ else:
             gm[line_list[GM_FIELD_INDEX]] = int(result[0][0])
 
         gmID = gm[line_list[GM_FIELD_INDEX]]
+
+        #inserting data to miejset
+        if not miej.has_key(line_list[MIEJ_FIELD_INDEX]):
+            cursor.execute("INSERT INTO generator_miejset (nazwa, gm_id) VALUES ('%s', %d); "
+                           % (str(line_list[MIEJ_FIELD_INDEX]).strip(), gmID))
+
+            db.commit()
+
+            cursor.execute("SELECT id from generator_miejset where nazwa = '%s'; "
+                           % line_list[MIEJ_FIELD_INDEX].strip())
+
+            result = cursor.fetchall()
+
+            print "MIEJID: %d" % int(result[0][0])
+
+            miej[line_list[MIEJ_FIELD_INDEX]] = int(result[0][0])
+
+        miejID = miej[line_list[MIEJ_FIELD_INDEX]]
 
 
         i += 1
