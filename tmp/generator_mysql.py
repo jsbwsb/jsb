@@ -93,7 +93,7 @@ else:
         #inserting data to gmset
         if not gm.has_key(line_list[GM_FIELD_INDEX]):
             cursor.execute("INSERT INTO generator_gmset (nazwa, pow_id) VALUES ('%s', %d); "
-                           % (str(line_list[POW_FIELD_INDEX]).strip(), powID))
+                           % (str(line_list[GM_FIELD_INDEX]).strip(), powID))
 
             db.commit()
 
