@@ -29,7 +29,7 @@ class PowSet(Model):
     def choose_pow(req):
 
         woj = req[1][0]
-        pow_set = ["test"]
+
         if woj == 'Wszystkie':
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
@@ -47,19 +47,19 @@ class GmSet(Model):
 
     @staticmethod
     def choose_gm(req):
-        '''
-        woj = req[1][0]
-        pow_set = ["test"]
-        if woj == 'Wszystkie':
-            pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
+
+        pow = req[1][1][0]
+
+        if pow == 'Wszystkie':
+            gm_set = ["wSZYSTKIE"]#PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
+            gm_set = ["Inne"]
+            #wojs = list(req[1])
+            #woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
 
-            wojs = list(req[1])
-            woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
+            #pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
 
-            pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
-        '''
-        return req
+        return gm_set
 
 
 def convert_to_unicode(word):
