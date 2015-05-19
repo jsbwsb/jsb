@@ -90,10 +90,6 @@ def str_to_list(strlist):
     pom2 = []
     slist = strlist.replace('[','').replace(']','').replace(' ','').replace("\\","").split(',')
 
-    if "Wszystkie" in slist[1]:
-        return [-1,['Wszystkie']]
-
-
     for w in slist:
         if w.lstrip("-+").isdigit():
             if len(pom) > 0:
