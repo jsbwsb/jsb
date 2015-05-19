@@ -63,7 +63,7 @@ else:
 
         #inserting data to wojset
         if not woj.has_key(line_list[WOJ_FIELD_INDEX]):
-            print str(line_list[WOJ_FIELD_INDEX]).strip()
+
             cursor.execute("INSERT INTO generator_wojset (nazwa) VALUES ('%s'); "
                            % str(line_list[WOJ_FIELD_INDEX]).strip())
 
@@ -74,7 +74,7 @@ else:
 
             result = cursor.fetchall()
 
-            print "WOJID: %d" % int(result[0][0])
+
 
             woj[line_list[WOJ_FIELD_INDEX]] = int(result[0][0])
 
@@ -92,7 +92,7 @@ else:
 
             result = cursor.fetchall()
 
-            print "POWID: %d" % int(result[0][0])
+
 
             pow[line_list[POW_FIELD_INDEX]] = int(result[0][0])
 
@@ -110,7 +110,6 @@ else:
 
             result = cursor.fetchall()
 
-            print "GMID: %d" % int(result[0][0])
 
             gm[line_list[GM_FIELD_INDEX]] = int(result[0][0])
 
@@ -128,7 +127,6 @@ else:
 
             result = cursor.fetchall()
 
-            print "MIEJID: %d" % int(result[0][0])
 
             miej[line_list[MIEJ_FIELD_INDEX]] = int(result[0][0])
 
@@ -144,6 +142,7 @@ else:
 
             db.commit()
 
+        print "#%d  Zaimportowany rekord %s" % (i, line_list)
         i += 1
 
     db.close()
