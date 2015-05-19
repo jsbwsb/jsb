@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^step2/', 'jsb.generator.views.step2'),     #showing form -step 2
     url(r'^step3/', 'jsb.generator.views.step3'),     #showing form -step 3
     url(r'^step4/', 'jsb.generator.views.step4'),     #showing form -step 4
+    url(r'^step5/', 'jsb.generator.views.step5'),     #showing form -step 5
     url(r'^gen_out/', 'jsb.generator.views.genout'),     #showing form
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
