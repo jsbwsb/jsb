@@ -147,7 +147,7 @@ def str_to_list(strlist):
             if len(pom) > 0:
                 pom.append(pom2)
                 ret.append(pom)
-                pom = [w]
+                pom = [int(w)]
                 pom2 = []
             else:
                 pom.append(int(w))
