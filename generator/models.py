@@ -111,7 +111,7 @@ def str_to_list(strlist):
         else:
             ret = pom
 
-    return slist#ret
+    return ret
 
 def get_option_value(req, step):
 
