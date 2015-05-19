@@ -13,6 +13,9 @@ POW_FIELD_INDEX = 5
 GM_FIELD_INDEX = 4
 MIEJ_FIELD_INDEX = 1
 
+KOD_FIELD_INDEX = 0
+ULICA_FIELD_INDEX = 0
+
 file = open(DATA_FILE, 'r')
 
 #connecting to database
@@ -130,6 +133,18 @@ else:
             miej[line_list[MIEJ_FIELD_INDEX]] = int(result[0][0])
 
         miejID = miej[line_list[MIEJ_FIELD_INDEX]]
+
+        #inserting data to adresyset
+        if not adres.has_key(line_list[KOD_FIELD_INDEX]) \
+                or adres[line_list[KOD_FIELD_INDEX]] not in line_list[ULICA_FIELD_INDEX]:
+            cursor.execute("INSERT INTO generator_adresset (ulica, kod, miej_id) VALUES ('%s', '%s', %d); "
+                           % (str(line_list[ULICA_FIELD_INDEX]).strip(),
+                              str(line_list[KOD_FIELD_INDEX]).strip(), miejID))
+
+
+            db.commit()
+
+
 
 
         i += 1
