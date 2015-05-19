@@ -138,7 +138,7 @@ def get_option_value(req, step):
         ret = [-1]
 
         #wojewodztwa
-        if 'option' in req_dict:
+        if 'options' in req_dict:
             options_list = [1,['DUPA']]
             #options_list = str_to_list(req_dict['options'][0])
         else:
