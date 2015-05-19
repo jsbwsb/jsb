@@ -60,7 +60,7 @@ class GmSet(Model):
                 pow_ids = PowSet.objects.filter(woj__in=woj_ids).values_list('id', flat=True)
                 gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
         else:
-            pow_ids = WojSet.objects.filter(nazwa__in=pows).values_list('id', flat=True)
+            pow_ids = PowSet.objects.filter(nazwa__in=pows).values_list('id', flat=True)
             gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
 
         return gm_set
