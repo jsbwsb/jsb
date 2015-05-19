@@ -32,7 +32,7 @@ class PowSet(Model):
     def choose_pow(req):
 
         woj = req[1][0]
-
+        pow_set = ["test"]
         if woj == 'Wszystkie':
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
@@ -50,9 +50,8 @@ class GmSet(Model):
 
     @staticmethod
     def choose_gm(req):
-
-        pow = req[1][1][0]
         '''
+        pow = req[1][0]
         pow_set = ["test"]
         if woj == 'Wszystkie':
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
@@ -63,7 +62,7 @@ class GmSet(Model):
 
             pow_set = PowSet.objects.filter(woj__in=woj_ids).values_list('nazwa', flat=True)
         '''
-        return [pow]
+        return req
 
 
 def convert_to_unicode(word):
