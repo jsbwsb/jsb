@@ -88,9 +88,9 @@ def str_to_list(strlist):
     pom2 = []
     slist = strlist.replace('[','').replace(']','').replace(' ','').replace("\\","").split(',')
 
-    '''
+
     for w in slist:
-        if w.isdigit():
+        if w.lstrip("-+").isdigit():
             if len(pom) > 0:
                 pom.append(pom2)
                 ret.append(pom)
@@ -108,10 +108,10 @@ def str_to_list(strlist):
             ret.append(pom)
         else:
             ret = pom
-    '''
 
 
-    return [slist]#ret
+
+    return slist#ret
 
 def get_option_value(req, step):
 
@@ -142,7 +142,6 @@ def get_option_value(req, step):
 
         #wojewodztwa
         if 'options' in req_dict:
-
             options_list = str_to_list(req_dict['options'][0])
         else:
             options_list = [-1, ['Wszystkie']]
