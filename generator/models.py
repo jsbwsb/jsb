@@ -30,7 +30,7 @@ class PowSet(Model):
 
         woj = req[1][0]
 
-        if woj == 'Wszystkie':
+        if woj == u'Wszystkie':
             pow_set = PowSet.objects.values_list('nazwa', flat=True).distinct()
         else:
 
@@ -133,11 +133,11 @@ def get_option_value(req, step):
             tmp = req_dict['woj']
 
             if 'all' in tmp:
-                ret.append(['Wszystkie'])
+                ret.append([u'Wszystkie'])
             else:
                 ret.append(tmp)
         else:
-            ret.append(['Wszystkie'])
+            ret.append([u'Wszystkie'])
 
     elif step == 3:
         ret = [-1]
@@ -146,7 +146,7 @@ def get_option_value(req, step):
         if 'options' in req_dict:
             options_list = str_to_list(req_dict['options'][0])
         else:
-            options_list = [-1, ['Wszystkie']]
+            options_list = [-1, [u'Wszystkie']]
 
         data_list = [options_list]
 
@@ -160,11 +160,11 @@ def get_option_value(req, step):
             tmp = req_dict['pow']
 
             if 'all' in tmp:
-                ppom.append(['Wszystkie'])
+                ppom.append([u'Wszystkie'])
             else:
                 ppom.append(tmp)
         else:
-            ppom.append(['Wszystkie'])
+            ppom.append([u'Wszystkie'])
 
         data_list.append(ppom)
 
