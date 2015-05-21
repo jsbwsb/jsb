@@ -300,7 +300,7 @@ def get_option_value(req, step):
 
     return ret
 
-def generate_text_file(filepath, data):
+def generate_text_file(filepath, data, separator='|'):
 
     f = open(filepath, 'w')
     for record in data:
@@ -309,11 +309,16 @@ def generate_text_file(filepath, data):
             d = unicode(record[i])
             f.write(d.encode("utf-8"))
             if i < dlugosc - 1:
-                f.write('|')
+                f.write(separator)
 
         f.write("\n")
 
     f.close()
+
+def generate_csv_file(filepath, data):
+    generate_text_file(filepath, data, ',')
+
+
 
 
 def generate_file(req):
@@ -365,10 +370,6 @@ def generate_file(req):
         filetype = 'TXT'
 
 
-
-
-
-
     try:
         db = mysql.connector.connect(host='mysql.server',
                                     port=3306,
@@ -393,7 +394,10 @@ def generate_file(req):
 
         result = cursor.fetchall()
 
-    generate_text_file(filepath, result)
+    if filetype == 'TXT':
+        generate_text_file(filepath, result)
+    elif filetype == 'CSV':
+        generate_csv_file(filepath, result)
 
 
 
