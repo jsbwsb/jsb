@@ -300,6 +300,13 @@ def get_option_value(req, step):
 
     return ret
 
+def generate_text_file(filepath, data):
+
+    f = open(filepath, 'w')
+    f.write(data)
+    f.close()
+
+
 def generate_file(req):
 
     req_dict = dict(req)
@@ -348,19 +355,9 @@ def generate_file(req):
     else:
         filetype = 'TXT'
 
-    f = open(filepath, 'w')
-    f.write('This is a test\n' + str(req))
-    f.write('\nwojewodztwa: %s' % str(wojewodztwa))
-    f.write('\npowiaty: %s' % str(powiaty))
-    f.write('\ngminy: %s' % str(gminy))
-    f.write('\nmiejscowosc: %s' % str(miejscowosc))
-    f.write('\nulica: %s' % str(ulica))
-    f.write('\nnrdomu: %s' % str(nrdomu))
-    f.write('\nkod: %s' % str(kod))
-    f.write('\nilosc: %s' % str(ilosc))
-    f.write('\nfiletype: %s' % str(filetype))
 
-    f.close()
+
+
 
 
     try:
@@ -387,7 +384,9 @@ def generate_file(req):
 
         result = cursor.fetchall()
 
-        f.write(result)
+    generate_text_file(filepath, result)
+
+
 
     return str(filename)
 
