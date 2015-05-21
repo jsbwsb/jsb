@@ -306,7 +306,8 @@ def generate_text_file(filepath, data):
     for record in data:
         dlugosc = len(record)
         for i in range(dlugosc):
-            f.write(record[i].encode("utf-8"))
+            d = unicode(record[i])
+            f.write(d.encode("utf-8"))
             if i < dlugosc - 1:
                 f.write('|')
 
