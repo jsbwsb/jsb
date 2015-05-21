@@ -9,6 +9,8 @@ from django.db.models import CharField, ForeignKey, PositiveIntegerField, Model
 import mysql.connector
 from mysql.connector import errorcode
 
+from lxml import etree
+
 
 
 FILENAME_FIELD = 'file_name'
@@ -302,7 +304,7 @@ def get_option_value(req, step):
 
 def generate_text_file(filepath, data, separator='|'):
 
-    f = open(filepath, 'w')
+    f = open(filepath+'.txt', 'w')
     for record in data:
         dlugosc = len(record)
         for i in range(dlugosc):
@@ -316,7 +318,27 @@ def generate_text_file(filepath, data, separator='|'):
     f.close()
 
 def generate_csv_file(filepath, data):
-    generate_text_file(filepath, data, ',')
+
+    #checking file name
+    generate_text_file(filepath + '.csv', data, ',')
+
+def generate_xml_file(filepath, data, struktura):
+
+    f = open(filepath + '.xml', 'w')
+    for record in data:
+        # create XML
+        rec = etree.Element('record')
+        d = etree.Element('dane')
+        d.text = record[0]
+        record.append(d)
+
+        # pretty string
+        s = etree.tostring(rec, pretty_print=True)
+
+        f.write(s)
+        f.write("\n")
+
+    f.close()
 
 
 
