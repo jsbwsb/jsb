@@ -303,7 +303,7 @@ def get_option_value(req, step):
 def generate_text_file(filepath, data):
 
     f = open(filepath, 'w')
-    f.write(data)
+    f.write(str(data))
     f.close()
 
 
