@@ -306,18 +306,56 @@ def generate_file(req):
     else:
         options_list = [[-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']]]
 
-    filename = str(req_dict[FILENAME_FIELD])
+
+    wojewodztwa = options_list[0]
+    powiaty = options_list[1]
+    gminy = options_list[2]
+    miejscowosc = options_list[3]
+
+    if 'ulica_on_off' in req_dict and 'ulica_order' in req_dict:
+        ulica = int(req_dict['ulica_order'][0])
+    else:
+        ulica = -1
+
+    if 'nrdomu_on_off ' in req_dict and 'nrdomu_order' in req_dict:
+        nrdomu = int(req_dict['nrdomu_order'][0])
+    else:
+        nrdomu = -1
+
+    if 'kod_on_off' in req_dict and 'kod_order' in req_dict:
+        kod = int(req_dict['kod_order'][0])
+    else:
+        kod = -1
+
+
+    filename = str(req_dict[FILENAME_FIELD][0])
 
     if filename is None or len(filename) == 0:
         filename = 'output.txt'
 
     filepath = settings.MEDIA_ROOT + os.sep + filename
 
+    if 'ilosc' in req_dict and req_dict['ilosc'][0].lstrip("-+").isdigit():
+        ilosc = int(req_dict['ilosc'][0])
+    else:
+        ilosc = 0
 
+    if 'group1' in req_dict:
+        filetype = req_dict['group1'][0]
+    else:
+        filetype = 'TXT'
 
     f = open(filepath, 'w')
     f.write('This is a test\n' + str(req))
-    f.write('Options: %s' % str(options_list))
+    f.write('\nwojewodztwa: %s' % str(wojewodztwa))
+    f.write('\npowiaty: %s' % str(powiaty))
+    f.write('\ngminy: %s' % str(gminy))
+    f.write('\nmiejscowosc: %s' % str(miejscowosc))
+    f.write('\nulica: %s' % str(ulica))
+    f.write('\nnrdomu: %s' % str(nrdomu))
+    f.write('\nkod: %s' % str(kod))
+    f.write('\nilosc: %s' % str(ilosc))
+    f.write('\nfiletype: %s' % str(filetype))
     f.close()
 
 
