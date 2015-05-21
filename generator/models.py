@@ -317,7 +317,7 @@ def generate_file(req):
     else:
         ulica = -1
 
-    if 'nrdomu_on_off ' in req_dict and 'nrdomu_order' in req_dict:
+    if 'nrdomu_on_off' in req_dict and 'nrdomu_order' in req_dict:
         nrdomu = int(req_dict['nrdomu_order'][0])
     else:
         nrdomu = -1
