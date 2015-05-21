@@ -275,25 +275,25 @@ def get_option_value(req, step):
         else:
             data_list = [[-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']]]
 
-        gpom=[-1]
-        if req_dict.has_key('gm_on_off') and req_dict.has_key('gm_order'):
-            if req_dict['gm_order'][0].lstrip("-+").isdigit():
-                gpom = [int(req_dict['gm_order'][0])]
+        mpom=[-1]
+        if req_dict.has_key('miej_on_off') and req_dict.has_key('miej_order'):
+            if req_dict['miej_order'][0].lstrip("-+").isdigit():
+                gpom = [int(req_dict['miej_order'][0])]
 
-        if req_dict.has_key('gm'):
-            tmp = req_dict['gm']
+        if req_dict.has_key('miej'):
+            tmp = req_dict['miej']
 
             if 'all' in tmp:
-                gpom.append([u'Wszystkie'])
+                mpom.append([u'Wszystkie'])
             else:
-                gpom.append(tmp)
+                mpom.append(tmp)
         else:
-            gpom.append([u'Wszystkie'])
+            mpom.append([u'Wszystkie'])
 
-        data_list.append(gpom)
+        data_list.append(mpom)
 
         ret = data_list
-        ret = req_dict
+
 
     return ret
 
