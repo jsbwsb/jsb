@@ -265,19 +265,19 @@
                 <input type="hidden" name="options" value="{{ req }}" />
 
                 <div>
-                <input type="checkbox" name="ulica_on_off" value="ulica_on"/>
+                <label><input type="checkbox" name="ulica_on_off" value="ulica_on"/>Ulica</label>
                 <h2><label for="ulica_order">Pozycja w pliku wynikowym:</label></h2>
                 <input type="text" name="ulica_order" value="5" />
                 </div>
 
                 <div>
-                <input type="checkbox" name="nrdomu_on_off" value="nrdomu_on"/>
+                <label><input type="checkbox" name="nrdomu_on_off" value="nrdomu_on"/>Numer domu</label>
                 <h2><label for="nrdomu_order">Pozycja w pliku wynikowym:</label></h2>
                 <input type="text" name="nrdomu_order" value="6" />
                 </div>
 
                 <div>
-                <input type="checkbox" name="kod_on_off" value="kod_on"/>
+                <label><input type="checkbox" name="kod_on_off" value="kod_on"/>Kod pocztowy</label>
                 <h2><label for="kod_order">Pozycja w pliku wynikowym:</label></h2>
                 <input type="text" name="kod_order" value="7" />
                 </div>
@@ -287,20 +287,10 @@
                 <input type="text" name="file_name" value="output.txt" />
                 </div>
 
-                <select multiple name="miej">
-                    <option value ="all">Wszystkie</option>
-                    {% for m in miej %}
-                        <option value = "{{ m }}">{{ m }}</option>
-                    {% endfor %}
-                </select><br>
-
-                <h2><label for="miej_order">Pozycja w pliku wynikowym:</label></h2>
-                <input type="text" name="miej_order" value="4" />
-
             </div>
 
             <div>
-                <input type="submit" value="DALEJ" />
+                <input type="submit" value="GENERUJ" />
             </div>
 
         </fieldset>
