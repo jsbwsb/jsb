@@ -331,7 +331,7 @@ def generate_xml_file(filepath, data, struktura):
         d = etree.Element('dane')
         d.text = unicode(record[0])
 
-        record.append(d)
+        rec.append(d)
 
         # pretty string
         s = etree.tostring(rec, pretty_print=True)
