@@ -97,7 +97,7 @@ class MiejSet(Model):
             else:
 
                 pow_ids = PowSet.objects.filter(nazwa__in=pow).values_list('id', flat=True)
-                gm_ids = GmSet.objects.filter(gm__in=pow_ids).values_list('id', flat=True)
+                gm_ids = GmSet.objects.filter(pow__in=pow_ids).values_list('id', flat=True)
                 m_set = MiejSet.objects.filter(gm__in=gm_ids).values_list('nazwa', flat=True)
 
         else:
