@@ -320,11 +320,11 @@ def generate_text_file(filepath, data, separator='|'):
 def generate_csv_file(filepath, data):
 
     #checking file name
-    generate_text_file(filepath + '.csv', data, ',')
+    generate_text_file(filepath, data, ',')
 
 def generate_xml_file(filepath, data, struktura):
 
-    f = open(filepath + '.xml', 'w')
+    f = open(filepath, 'w')
     for record in data:
         # create XML
         rec = etree.Element('record')
