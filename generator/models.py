@@ -356,6 +356,7 @@ def generate_file(req):
     f.write('\nkod: %s' % str(kod))
     f.write('\nilosc: %s' % str(ilosc))
     f.write('\nfiletype: %s' % str(filetype))
+
     f.close()
 
 
