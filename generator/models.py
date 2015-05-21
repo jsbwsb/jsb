@@ -303,7 +303,15 @@ def get_option_value(req, step):
 def generate_text_file(filepath, data):
 
     f = open(filepath, 'w')
-    f.write(str(data))
+    for record in data:
+        dlugosc = len(record)
+        for i in range(dlugosc):
+            if i < dlugosc - 1:
+                f.write("%s|" % record[i])
+            else:
+                f.write("%s" %record[i])
+        f.write("\n")
+
     f.close()
 
 
