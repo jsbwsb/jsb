@@ -299,6 +299,12 @@ def get_option_value(req, step):
 
 def generate_file(req):
 
+    #opcje
+    if 'options' in req:
+        options_list = str_to_list(req['options'][0])
+    else:
+        options_list = [[-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']]]
+
     filename = str(req.get(FILENAME_FIELD))
 
     if filename is None or len(filename) == 0:
@@ -310,6 +316,7 @@ def generate_file(req):
 
     f = open(filepath, 'w')
     f.write('This is a test\n' + str(req))
+    f.write('Options: %s' % str(options_list))
     f.close()
 
 
