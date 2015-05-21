@@ -258,6 +258,46 @@
         </div>
 
 
+    <form action="/gen_out" method="get">
+        <fieldset>
+
+            <div>
+                <input type="hidden" name="options" value="{{ req }}" />
+
+                <input type="checkbox" name="ulica_on_off" value="ulica_on"/>
+                <h2><label for="ulica_order">Pozycja w pliku wynikowym:</label></h2>
+                <input type="text" name="ulica_order" value="5" />
+
+                <input type="checkbox" name="nrdomu_on_off" value="nrdomu_on"/>
+                <h2><label for="nrdomu_order">Pozycja w pliku wynikowym:</label></h2>
+                <input type="text" name="nrdomu_order" value="6" />
+
+                <input type="checkbox" name="kod_on_off" value="kod_on"/>
+                <h2><label for="kod_order">Pozycja w pliku wynikowym:</label></h2>
+                <input type="text" name="kod_order" value="6" />
+
+                <h2><label for="ulica_order">Rezultat jako plik:</label></h2>
+                <input type="text" name="file_name" value="output.txt" />
+
+                <select multiple name="miej">
+                    <option value ="all">Wszystkie</option>
+                    {% for m in miej %}
+                        <option value = "{{ m }}">{{ m }}</option>
+                    {% endfor %}
+                </select><br>
+
+                <h2><label for="miej_order">Pozycja w pliku wynikowym:</label></h2>
+                <input type="text" name="miej_order" value="4" />
+
+            </div>
+
+            <div>
+                <input type="submit" value="DALEJ" />
+            </div>
+
+        </fieldset>
+        </form>
+
 
 <h4>STEP 5 {{req}}</h4>
 
