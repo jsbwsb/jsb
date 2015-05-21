@@ -299,13 +299,14 @@ def get_option_value(req, step):
 
 def generate_file(req):
 
+    req_dict = dict(req)
     #opcje
-    if 'options' in req:
-        options_list = str_to_list(req['options'][0])
+    if 'options' in req_dict:
+        options_list = str_to_list(req_dict['options'][0])
     else:
         options_list = [[-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']]]
 
-    filename = str(req.get(FILENAME_FIELD))
+    filename = str(req_dict[FILENAME_FIELD])
 
     if filename is None or len(filename) == 0:
         filename = 'output.txt'
