@@ -278,7 +278,7 @@ def get_option_value(req, step):
         mpom=[-1]
         if req_dict.has_key('miej_on_off') and req_dict.has_key('miej_order'):
             if req_dict['miej_order'][0].lstrip("-+").isdigit():
-                gpom = [int(req_dict['miej_order'][0])]
+                mpom = [int(req_dict['miej_order'][0])]
 
         if req_dict.has_key('miej'):
             tmp = req_dict['miej']
