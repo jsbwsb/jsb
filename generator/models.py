@@ -304,7 +304,7 @@ def get_option_value(req, step):
 
 def generate_text_file(filepath, data, separator='|'):
 
-    f = open(filepath+'.txt', 'w')
+    f = open(filepath, 'w')
     for record in data:
         dlugosc = len(record)
         for i in range(dlugosc):
@@ -374,12 +374,11 @@ def generate_file(req):
         kod = -1
 
 
-    filename = str(req_dict[FILENAME_FIELD][0])
 
-    if filename is None or len(filename) == 0:
-        filename = 'output.txt'
 
-    filepath = settings.MEDIA_ROOT + os.sep + filename
+
+
+
 
     if 'ilosc' in req_dict and req_dict['ilosc'][0].lstrip("-+").isdigit():
         ilosc = int(req_dict['ilosc'][0])
@@ -416,15 +415,26 @@ def generate_file(req):
 
         result = cursor.fetchall()
 
+    filename = str(req_dict[FILENAME_FIELD][0])
+    if filename is None or len(filename) == 0:
+        filename = 'output'
 
     if filetype == 'csv':
+        filename += '.csv'
+        filepath = settings.MEDIA_ROOT + os.sep + filename
         generate_csv_file(filepath, result)
+
     elif filetype == 'xml':
-        generate_xml_file(filepath, result)
+        filename += '.csv'
+        filepath = settings.MEDIA_ROOT + os.sep + filename
+        generate_xml_file(filepath, result, '')
+
     else:
-        generate_text_file(filepath, result)
+        filename += '.txt'
+        filepath = settings.MEDIA_ROOT + os.sep + filename
+        generate_text_file(filepath+'.txt', result)
 
 
 
-    return str(filename+'.'+filetype)
+    return str(filename)
 
