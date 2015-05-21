@@ -302,7 +302,7 @@ def generate_file(req):
     filename = str(req.get(FILENAME_FIELD))
 
     if filename is None or len(filename) == 0:
-        filename = 'workfile.txt'
+        filename = 'output.txt'
 
     filepath = settings.MEDIA_ROOT + os.sep + filename
 
