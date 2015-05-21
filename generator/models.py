@@ -86,15 +86,20 @@ class MiejSet(Model):
                 else:
                     m_set = ['do zrobienia_woj']
 
+                    '''
+                    woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
+                    pow_ids = PowSet.objects.filter(woj__in=woj_ids).values_list('id', flat=True)
+                    gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
+                    '''
+
 
 
             else:
-                m_set = ['do zrobienia_pow']
-                '''
-                woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
-                pow_ids = PowSet.objects.filter(woj__in=woj_ids).values_list('id', flat=True)
-                gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
-                '''
+
+                pow_ids = PowSet.objects.filter(nazwa__in=pow).values_list('id', flat=True)
+                gm_ids = GmSet.objects.filter(gm__in=pow_ids).values_list('id', flat=True)
+                m_set = MiejSet.objects.filter(gm__in=gm_ids).values_list('nazwa', flat=True)
+
         else:
 
             gm_ids = GmSet.objects.filter(nazwa__in=gms).values_list('id', flat=True)
