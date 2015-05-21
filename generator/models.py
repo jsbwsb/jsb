@@ -6,6 +6,9 @@ import re
 from django.conf import settings
 from django.db.models import CharField, ForeignKey, PositiveIntegerField, Model
 
+import mysql.connector
+from mysql.connector import errorcode
+
 
 
 FILENAME_FIELD = 'file_name'
@@ -359,6 +362,32 @@ def generate_file(req):
 
     f.close()
 
+
+    try:
+        db = mysql.connector.connect(host='mysql.server',
+                                    port=3306,
+                                    user='jsb',
+                                    password='Testerki@1',
+                                    database='jsb$ADRESY')
+
+
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+    else:
+
+        # prepare a cursor object using cursor() method
+        cursor = db.cursor()
+
+        cursor.execute("SELECT nazwa from generator_wojset; ")
+
+        result = cursor.fetchall()
+
+        f.write(result)
 
     return str(filename)
 
