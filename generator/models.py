@@ -389,7 +389,7 @@ def generate_file(req):
     if 'group1' in req_dict:
         filetype = req_dict['group1'][0]
     else:
-        filetype = 'TXT'
+        filetype = 'txt'
 
 
     try:
@@ -416,12 +416,15 @@ def generate_file(req):
 
         result = cursor.fetchall()
 
-    if filetype == 'TXT':
-        generate_text_file(filepath, result)
-    elif filetype == 'CSV':
+
+    if filetype == 'csv':
         generate_csv_file(filepath, result)
+    elif filetype == 'xml':
+        generate_xml_file(filepath, result)
+    else:
+        generate_text_file(filepath, result)
 
 
 
-    return str(filename)
+    return str(filename+'.'+filetype)
 
