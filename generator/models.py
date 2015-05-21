@@ -240,12 +240,10 @@ def get_option_value(req, step):
 
         #wojewodztwa i powiaty
         if 'options' in req_dict:
-            #data_list = []
-            #data_list.append(str_to_list(req_dict['options'][0]))
+
             data_list = str_to_list(req_dict['options'][0])
 
         else:
-
             data_list = [[-1, [u'Wszystkie']], [-1, [u'Wszystkie']]]
 
         gpom=[-1]
@@ -268,6 +266,33 @@ def get_option_value(req, step):
         ret = data_list
 
     elif step == 5:
+
+        #wojewodztwa, powiaty i gminy
+        if 'options' in req_dict:
+
+            data_list = str_to_list(req_dict['options'][0])
+
+        else:
+            data_list = [[-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']]]
+
+        gpom=[-1]
+        if req_dict.has_key('gm_on_off') and req_dict.has_key('gm_order'):
+            if req_dict['gm_order'][0].lstrip("-+").isdigit():
+                gpom = [int(req_dict['gm_order'][0])]
+
+        if req_dict.has_key('gm'):
+            tmp = req_dict['gm']
+
+            if 'all' in tmp:
+                gpom.append([u'Wszystkie'])
+            else:
+                gpom.append(tmp)
+        else:
+            gpom.append([u'Wszystkie'])
+
+        data_list.append(gpom)
+
+        ret = data_list
         ret = req_dict
 
     return ret
