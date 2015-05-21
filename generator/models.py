@@ -330,6 +330,7 @@ def generate_xml_file(filepath, data, struktura):
         rec = etree.Element('record')
         d = etree.Element('dane')
         d.text = unicode(record[0])
+
         record.append(d)
 
         # pretty string
