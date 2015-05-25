@@ -12,7 +12,7 @@
 
             <input type="checkbox" name="woj_on_off" value="woj_on"/>
 
-            <select multiple name="woj">
+            <select name="woj">
                 <option value ="all">Wszystkie</option>
                 {% for w in woj %}
                     <option value = "{{ w }}">{{ w }}</option>
