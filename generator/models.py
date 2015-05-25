@@ -313,7 +313,7 @@ def generate_csv_file(filepath, data, number=100):
 
 def generate_xml_file(filepath, data, structure = []):
 
-    if len(structure) != len(len(data[0])):
+    if len(structure) != len(data[0]):
         structure = []
         for i in range(len(len(data[0]))):
             structure.append('field_%d' % i)
