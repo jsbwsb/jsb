@@ -311,9 +311,16 @@ def generate_csv_file(filepath, data, number=100):
     #checking file name
     generate_text_file(filepath, data, number, ',')
 
-def generate_xml_file(filepath, data, struktura):
+def generate_xml_file(filepath, data, structure = []):
+
+    if len(structure) != len(len(data[0])):
+        structure = []
+        for i in range(len(len(data[0]))):
+            structure.append('field_%d' % i)
 
     f = open(filepath, 'w')
+    f.write(str(structure))
+
     for record in data:
         # create XML
         rec = etree.Element('record')
@@ -326,7 +333,7 @@ def generate_xml_file(filepath, data, struktura):
         s = etree.tostring(rec, pretty_print=True)
 
         f.write(s)
-        f.write("\n")
+
 
     f.close()
 
@@ -411,7 +418,7 @@ def generate_file(req):
     elif filetype == 'xml':
         filename += '.xml'
         filepath = settings.MEDIA_ROOT + os.sep + filename
-        generate_xml_file(filepath, result, '')
+        generate_xml_file(filepath, result, [])
 
     else:
         filename += '.txt'
