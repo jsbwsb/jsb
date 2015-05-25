@@ -301,7 +301,7 @@ def generate_text_file(filepath, data, number=100, separator='|'):
         count += 1
 
         f.write("\n")
-        if count > number:
+        if count >= number:
             break
 
     f.close()
