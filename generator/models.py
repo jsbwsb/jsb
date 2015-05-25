@@ -299,7 +299,6 @@ def generate_text_file(filepath, data, number=100, separator='|'):
                 f.write(separator)
 
         count += 1
-        f.write(str(count) + '\n')
 
         f.write("\n")
         if count > number:
