@@ -1,61 +1,97 @@
-
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Generator danych adresowych</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-</head>
- 
-<body>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>GENERATOR ADRESÓW</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 
-<div class="container" id="wrapper">
+	</head>
+	<body>
+		<div id="header">
+			<div id="greySpace">
+				<div id="logo">
+					<div>GENERATOR</div>
+					<div>ADRESÓW</div>
+				</div>
+			</div>
+			<div id="redSpace">
+			</div>
+		</div>
 
-    <div class="row"><!--  PASEK GORA -->
-        <div class="topbar">
-            <div class="logo pull-left">
-                <h1><a href="#"><img src="/static/img/poziom.gif"></a></h1> <!-- Obrazek -->
-            </div>
+		<div id="main">
 
-        </div>
-    </div> <!-- Logo -->
+			<h4>Wybierz zakres danych:</h4><br>
 
-    <div class="row"><!-- Menu -->
-        <div id="mainmenu" class="navbar navbar-inverse"> 
-                <div class="navbar-inner">
-                    <div>
-                        <a class="brand" href="#">ADRES</a>
-                        <ul class="nav">
-                            <li class="active"><a href="/generator/show">Home</a></li>
-                        </ul>
-                    </div>
-                </div>
-        </div>
-    </div>
+			<input type="checkbox" name="ADRES" style="float: left;"/>
+			<label for="city" style="width: 160px; float:left;" >Wybierz Województwo</label>
 
-    <div class="row"><!-- Glowna czesc -->
+			<select name="city">
+				<option value ="miasto">Wszystkie</option>
+				<option value ="miasto">Pomorskie</option>
+				<option value ="miasto">Mazowieckie</option>
+				<option value ="miasto">Wielkopolskie</option>
+				<option value ="miasto">Zachodniopomorskie</option>
+			</select><br>
 
+			<input type="checkbox" name="ADRES" style="float: left;"/>
+			<label for="city" style="width: 160px; float: left;" >Wybierz Powiat</label>
 
-				{% block content %}
-				{% endblock %}
+			<select name="city">
+				<option value ="miasto">Wszystkie</option>
+				<option value ="miasto">Gdańsk</option>
+				<option value ="miasto">Rzeszów</option>
+				<option value ="miasto">Łód</option>
+				<option value ="miasto">Kraków</option>
+			</select><br>
 
+			<input type="checkbox" name="ADRES" style="float: left;"/>
+			<label for="city" style="width: 160px; float:left;" >Wybierz Gminę</label>
 
-    </div><!-- glowna czesc  -->
+			<select name="city">
+				<option value ="miasto">Wszystkie</option>
+				<option value ="miasto">Gdańsk</option>
+				<option value ="miasto">Rzeszów</option>
+				<option value ="miasto">Kraków</option>
+				<option value ="miasto">Wrocław</option>
+			</select><br>
 
+			<input type="checkbox" name="ADRES" style="float: left;"/>
+			<label for="city" style="width: 160px; float: left;" >Wybierz Miejscowoć</label>
 
-    <div class="row">
-        <hr>
-        <div class="footer-wrap">
-            <p>Autorzy aplikacji web: Sylwia, Beata, Joanna</p>
-            
-        </div>
-    </div> <!-- Stopka -->
+			<select name="city">
+				<option value ="miasto">Wszystkie</option>
+				<option value ="miasto">Gdańsk</option>
+				<option value ="miasto">Łód</option>
+				<option value ="miasto">Kraków</option>
+				<option value ="miasto">Rzeszów</option>
+			</select><br>
 
-</div>
+				<input type="checkbox" name="ADRES" style="float: left;"/>
+				<label for="ADRES" style="width: 160px; float: left;" >Ulica</label><br>
 
-</body> 
+				<input type="checkbox" name="ADRES" style="float: left;"/>
+				<label for="ADRES" style="width: 160px; float: left;" >Nr domu</label><br>
 
+				<input type="checkbox" name="ADRES"  style="float: left;"/>
+				<label for="ADRES" style="width: 160px; float: left;" >Kod pocztowy</label><br>
+
+			<div id="result">
+				<label for="lunch" >Rezultat jako:</label><br>
+				<input type="radio" name="lunch" value="plik" /> XML
+				<input type="radio" name="lunch" value="plik" /> JSON
+				<input type="radio" name="lunch" value="plik" /> CSV
+				<input type="radio" name="lunch" value="plik" /> SQL
+				<input type="radio" name="lunch" value="plik" /> TXT
+			</div>
+
+			<div>Wpisz iloć adresów:</div>
+				<input type="text" id="inputExample"></input>
+				<input type="button" id="buttonExample" value="GENERUJ"></input>
+		</div>
+
+		<div id="footer">
+			<div>2015 - Wyższa Szkoła Bankowa</div>
+			<div>Autorzy aplikacji web: Sylwia Kos, Beata Jakimiak-Rychlicka, Joanna Górska</div>
+		</div>
+	</body>
 </html>

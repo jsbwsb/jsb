@@ -1,49 +1,92 @@
 
-.topbar-links {
-	line-height: 18px;
-	margin-top: 40px;
+* {
+    box-sizing: border-box;
+	font-family:Arial, sans-serif ;
 }
 
-.latest-article {
-	font-size: .9em;
-	margin-left: 45px;
-	margin-top: 25px;
-} 
-
-.latest-article img {
-	margin-bottom: 10px;
+html {
+	margin: 0;
+	padding: 0;
+	background-color: #3eb2a5;
+	font-family:Arial, sans-serif ;
 }
 
-.article-info {
-	margin-bottom: 10px;
+body {
+	margin: 0;
+	padding: 0;
 }
-
-.latest-article:first-child {
-	margin-left: 0 !important;
+h4 {
+	padding-left: 25px;
 }
 
 
-
-.article-intro {
-	margin-top: 20px;
+label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 5px;
+    margin-right: 15px;
+	font-size: 15px;
 }
 
-.art-more {
-	margin-bottom: 15px;
+input[type=checkbox] {
+	width: 30px;
 }
 
-hr {
-	color: rgb(47, 164, 231);
-	background-color: rgb(47, 164, 231);
-	height: 4px;
+select {
+    height: 23px;
+	width: 200px;
+
 }
 
-.form-wrapper {
-	width: 70%;
-	margin: 0 auto;
+input[type=button] {
+	background-color: #3eb2a5;
+	height: 22px;
+	outline: none;
+	border: none;
 }
 
-.left_col {
-	min-height: 500px;
+
+#greySpace {
+	background-color: #474646;
+	height: 110px;
+}
+
+#logo {
+	background-image: url(/static/img/polska-serce.png);
+	background-position: 200px 24px;
+	background-repeat: no-repeat;
+	padding-top: 33px;
+	padding-left: 285px;
+	height: 100%;
+	font-size: 18px;
+	color: white;
+}
+
+#redSpace {
+	background-color: #fa0404;
+	height: 5px;
+}
+
+#main {
+	padding-top: 50px;
+	padding-left: 200px;
+	min-height: 760px;
+	background-color: white;
+	line-height: 200%;
+}
+
+#result {
+    margin: 15px;
+
+}
+
+#buttonExample {
+	margin-left: 5px;
+}
+
+#footer {
+	text-align: center;
+	padding-top: 15px;
 }
 
