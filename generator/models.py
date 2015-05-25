@@ -116,23 +116,7 @@ class AdresSet(Model):
 
     @staticmethod
     def choose_adres(req):
-        '''
 
-        pows = req[1][1]
-
-        if pows[0] == u'Wszystkie':
-            wojs = req[0][1]
-
-            if wojs[0] == u'Wszystkie':
-                gm_set = GmSet.objects.values_list('nazwa', flat=True).distinct()
-            else:
-                woj_ids = WojSet.objects.filter(nazwa__in=wojs).values_list('id', flat=True)
-                pow_ids = PowSet.objects.filter(woj__in=woj_ids).values_list('id', flat=True)
-                gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
-        else:
-            pow_ids = PowSet.objects.filter(nazwa__in=pows).values_list('id', flat=True)
-            gm_set = GmSet.objects.filter(pow__in=pow_ids).values_list('nazwa', flat=True)
-        '''
         return req
 
 def convert_to_unicode(word):
@@ -302,9 +286,10 @@ def get_option_value(req, step):
 
     return ret
 
-def generate_text_file(filepath, data, separator='|'):
+def generate_text_file(filepath, data, separator='|', number = 100):
 
     f = open(filepath, 'w')
+    count = 0
     for record in data:
         dlugosc = len(record)
         for i in range(dlugosc):
@@ -312,15 +297,19 @@ def generate_text_file(filepath, data, separator='|'):
             f.write(d.encode("utf-8"))
             if i < dlugosc - 1:
                 f.write(separator)
+            count += 1
+
 
         f.write("\n")
+        if count > number:
+            break
 
     f.close()
 
-def generate_csv_file(filepath, data):
+def generate_csv_file(filepath, data, number = 100):
 
     #checking file name
-    generate_text_file(filepath, data, ',')
+    generate_text_file(filepath, data, ',', number)
 
 def generate_xml_file(filepath, data, struktura):
 
@@ -375,12 +364,6 @@ def generate_file(req):
         kod = -1
 
 
-
-
-
-
-
-
     if 'ilosc' in req_dict and req_dict['ilosc'][0].lstrip("-+").isdigit():
         ilosc = int(req_dict['ilosc'][0])
     else:
@@ -426,14 +409,14 @@ def generate_file(req):
         generate_csv_file(filepath, result)
 
     elif filetype == 'xml':
-        filename += '.csv'
+        filename += '.xml'
         filepath = settings.MEDIA_ROOT + os.sep + filename
         generate_xml_file(filepath, result, '')
 
     else:
         filename += '.txt'
         filepath = settings.MEDIA_ROOT + os.sep + filename
-        generate_text_file(filepath+'.txt', result)
+        generate_text_file(filepath+'.txt', result, ilosc)
 
 
 
