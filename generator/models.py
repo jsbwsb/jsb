@@ -297,8 +297,9 @@ def generate_text_file(filepath, data, number=100, separator='|'):
             f.write(d.encode("utf-8"))
             if i < dlugosc - 1:
                 f.write(separator)
-            count += 1
 
+        count += 1
+        f.write(str(count) + '\n')
 
         f.write("\n")
         if count > number:
