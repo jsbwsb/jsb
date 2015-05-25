@@ -417,7 +417,7 @@ def generate_file(req):
     else:
         filename += '.txt'
         filepath = settings.MEDIA_ROOT + os.sep + filename
-        generate_text_file(filepath+'.txt', result, ilosc)
+        generate_text_file(filepath, result, ilosc)
 
 
 
