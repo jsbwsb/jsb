@@ -286,7 +286,7 @@ def get_option_value(req, step):
 
     return ret
 
-def generate_text_file(filepath, data, separator='|', number = 100):
+def generate_text_file(filepath, data, number=100, separator='|'):
 
     f = open(filepath, 'w')
     count = 0
@@ -306,10 +306,10 @@ def generate_text_file(filepath, data, separator='|', number = 100):
 
     f.close()
 
-def generate_csv_file(filepath, data, number = 100):
+def generate_csv_file(filepath, data, number=100):
 
     #checking file name
-    generate_text_file(filepath, data, ',', number)
+    generate_text_file(filepath, data, number, ',')
 
 def generate_xml_file(filepath, data, struktura):
 
@@ -406,7 +406,7 @@ def generate_file(req):
     if filetype == 'csv':
         filename += '.csv'
         filepath = settings.MEDIA_ROOT + os.sep + filename
-        generate_csv_file(filepath, result)
+        generate_csv_file(filepath, result, ilosc)
 
     elif filetype == 'xml':
         filename += '.xml'
