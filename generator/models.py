@@ -496,10 +496,10 @@ def generate_file(req):
         struktura_pom[miejscowosci[0]] = 'miejscowosc'
 
     if kod >= 0:
-        struktura_pom[kod] = 'kod pocztowy'
+        struktura_pom[kod] = 'kod_pocztowy'
 
     if nrdomu >= 0:
-        struktura_pom[nrdomu] = 'nr domu'
+        struktura_pom[nrdomu] = 'nr_domu'
 
     if ulica >= 0:
         struktura_pom[ulica] = 'ulica'
