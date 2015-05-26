@@ -325,13 +325,15 @@ def generate_xml_file(filepath, data, structure=[], number=100):
 
         for record in data:
             # create XML
-            rec = etree.Element('record')
+            root = etree.Element('data')
             i = 0
             for field in structure:
-                d = etree.Element(field)
-                d.text = unicode(record[i])
+                rec = etree.Element('record')
+                dat = etree.Element(field)
+                dat.text = unicode(record[i])
 
-                rec.append(d)
+                rec.append(dat)
+                root.append(rec)
                 i += 1
 
             # pretty string
