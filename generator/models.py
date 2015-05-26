@@ -311,31 +311,39 @@ def generate_csv_file(filepath, data, number=100):
     #checking file name
     generate_text_file(filepath, data, number, ',')
 
-def generate_xml_file(filepath, data, structure=[]):
+def generate_xml_file(filepath, data, structure=[], number=100):
 
     f = open(filepath, 'w')
 
     if len(data) > 0:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        count = 0
         if len(structure) != len(data[0]):
             structure = []
             for i in range(len(data[0])):
                 structure.append('field_%d' % i)
 
-        #tste
-        f.write(str(structure))
-
         for record in data:
             # create XML
             rec = etree.Element('record')
-            d = etree.Element('dane')
-            d.text = unicode(record[0])
+            i = 0
+            for field in structure:
+                d = etree.Element(field)
+                d.text = unicode(record[i])
 
-            rec.append(d)
+                rec.append(d)
+                i += 1
 
             # pretty string
             s = etree.tostring(rec, pretty_print=True)
-
             f.write(s)
+
+            count += 1
+
+            if count >= number:
+                break
+
+
 
     f.close()
 
