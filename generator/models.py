@@ -9,7 +9,10 @@ from django.db.models import CharField, ForeignKey, PositiveIntegerField, Model
 import mysql.connector
 from mysql.connector import errorcode
 
+import sqlite3
+
 from lxml import etree
+
 
 
 
@@ -353,6 +356,28 @@ def generate_xml_file(filepath, data, structure=[], number=100):
 
     f.close()
 
+def generate_sql_file(filepath, data, structure=[], number=100):
+
+    try:
+        conn = sqlite3.connect(filepath)
+        c = conn.cursor()
+
+    except sqlite3.Error as e:
+        print "Connection to database could not be established"
+
+    # Create table
+    c.execute('''CREATE TABLE stocks
+             (date text, trans text, symbol text, qty real, price real)''')
+
+    # Insert a row of data
+    c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+
+    # Save (commit) the changes
+    conn.commit()
+
+    # We can also close the connection if we are done with it.
+    # Just be sure any changes have been committed or they will be lost.
+    conn.close()
 
 
 
@@ -439,6 +464,11 @@ def generate_file(req):
         filename += '.xml'
         filepath = settings.MEDIA_ROOT + os.sep + filename
         generate_xml_file(filepath, result, rek_struktura, ilosc)
+
+    elif filetype == 'sql':
+        filename += '.sqlite3'
+        filepath = settings.MEDIA_ROOT + os.sep + filename
+        generate_sql_file(filepath, result, rek_struktura, ilosc)
 
     else:
         filename += '.txt'
