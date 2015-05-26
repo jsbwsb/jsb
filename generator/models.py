@@ -293,6 +293,8 @@ def get_option_value(req, step):
 def generate_text_file(filepath, data, number=100, separator='|'):
 
     f = open(filepath, 'w')
+
+
     count = 0
     for record in data:
         dlugosc = len(record)
@@ -451,7 +453,7 @@ def generate_file(req):
     wojewodztwa = options_list[0]
     powiaty = options_list[1]
     gminy = options_list[2]
-    miejscowosc = options_list[3]
+    miejscowosci = options_list[3]
 
     if 'ulica_on_off' in req_dict and 'ulica_order' in req_dict:
         ulica = int(req_dict['ulica_order'][0])
@@ -537,6 +539,17 @@ def generate_file(req):
         filename += '.txt'
         filepath = settings.MEDIA_ROOT + os.sep + filename
         generate_text_file(filepath, result, ilosc)
+
+        f = open(filepath+'2', 'w')
+        #test:
+        f.write(str(wojewodztwa) +'\n')
+        f.write(str(powiaty)+'\n')
+        f.write(str(gminy)+'\n')
+        f.write(str(miejscowosci)+'\n')
+        f.write(str(ulica)+'\n')
+        f.write(str(kod)+'\n')
+        f.write(str(nrdomu)+'\n')
+        f.close()
 
 
 
