@@ -367,21 +367,40 @@ def generate_sql_file(filepath, data, structure=[], number=100):
     except sqlite3.Error as e:
         print "Connection to database could not be established"
 
-    # Create table
-    c.execute('''CREATE TABLE stocks
-             (date text, trans text, symbol text, qty real, price real)''')
+    if len(data) > 0:
 
-    # Insert a row of data
-    c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+        count = 0
+        if len(structure) != len(data[0]):
+            structure = []
+            for i in range(len(data[0])):
+                structure.append('field_%d' % i)
 
-    # Save (commit) the changes
-    conn.commit()
+        # Create table
+        st = []
+        ch = []
 
-    # Insert a row of data
-    c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+        for field in structure:
+            st.append('%s text' % field)
+            ch.append('?')
+        st_res = ", ".join(st)
+        ch_res = ", ".join(ch)
 
-    # Save (commit) the changes
-    conn.commit()
+        create_str = 'CREATE TABLE ADRESY (%s)' % st_res
+
+        c.execute(create_str)
+
+        for record in data:
+            # Insert a row of data
+            c.execute("INSERT INTO ADRESY VALUES (%s)" %ch_res, tuple(record))
+
+            # Save (commit) the changes
+            conn.commit()
+
+
+            count += 1
+
+            if count >= number:
+                break
 
     # We can also close the connection if we are done with it.
     # Just be sure any changes have been committed or they will be lost.
