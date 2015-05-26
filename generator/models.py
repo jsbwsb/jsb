@@ -380,7 +380,7 @@ def generate_sql_file(filepath, data, structure=[], number=100):
         ch = []
 
         for field in structure:
-            st.append('%s text' % field)
+            st.append('%s VARCHAR(60)' % field)
             ch.append('?')
         st_res = ", ".join(st)
         ch_res = ", ".join(ch)
