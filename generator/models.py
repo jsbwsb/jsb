@@ -333,9 +333,9 @@ def generate_xml_file(filepath, data, structure=[], number=100):
                 dat.text = unicode(record[i])
 
                 rec.append(dat)
-                root.append(rec)
-                i += 1
 
+                i += 1
+            root.append(rec)
             # pretty string
             s = etree.tostring(rec, pretty_print=True)
             f.write(s)
