@@ -323,12 +323,14 @@ def generate_xml_file(filepath, data, structure=[], number=100):
             for i in range(len(data[0])):
                 structure.append('field_%d' % i)
 
+        root = etree.Element('data')
+
         for record in data:
             # create XML
-            root = etree.Element('data')
+            rec = etree.Element('record')
             i = 0
             for field in structure:
-                rec = etree.Element('record')
+
                 dat = etree.Element(field)
                 dat.text = unicode(record[i])
 
@@ -336,14 +338,16 @@ def generate_xml_file(filepath, data, structure=[], number=100):
 
                 i += 1
             root.append(rec)
-            # pretty string
-            s = etree.tostring(rec, pretty_print=True)
-            f.write(s)
+
 
             count += 1
 
             if count >= number:
                 break
+
+        # pretty string
+        s = etree.tostring(root, pretty_print=True)
+        f.write(s)
 
 
 
