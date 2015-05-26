@@ -483,7 +483,26 @@ def generate_file(req):
 
     #wygenerowanie struktury wyjsciowej
     struktura = {}
-    struktura[wojewodztwa[0]] = 'wojewodztwo'
+
+    if wojewodztwa[0] >= 0:
+        struktura[wojewodztwa[0]] = 'wojewodztwo'
+    if powiaty[0] >= 0:
+        struktura[powiaty[0]] = 'powiat'
+
+    if gminy[0] >= 0:
+        struktura[gminy[0]] = 'gmina'
+
+    if miejscowosci[0] >= 0:
+        struktura[miejscowosci[0]] = 'miejscowosc'
+
+    if kod >= 0:
+        struktura[kod] = 'kod pocztowy'
+
+    if nrdomu >= 0:
+        struktura[nrdomu] = 'nr domu'
+
+    if ulica >= 0:
+        struktura[ulica] = 'ulica'
 
 
 
