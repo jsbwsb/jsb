@@ -311,14 +311,14 @@ def generate_csv_file(filepath, data, number=100):
     #checking file name
     generate_text_file(filepath, data, number, ',')
 
-def generate_xml_file(filepath, data, structure = []):
+def generate_xml_file(filepath, data, structure=[]):
 
     f = open(filepath, 'w')
 
     if len(data) > 0:
         if len(structure) != len(data[0]):
             structure = []
-            for i in range(len(len(data[0]))):
+            for i in range(len(data[0])):
                 structure.append('field_%d' % i)
 
         #tste
