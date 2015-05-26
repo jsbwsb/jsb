@@ -415,12 +415,16 @@ def generate_file(req):
             print(err)
     else:
 
+
         # prepare a cursor object using cursor() method
         cursor = db.cursor()
 
         cursor.execute("SELECT id, nazwa from generator_wojset; ")
 
         result = cursor.fetchall()
+
+
+    rek_struktura = ['id', 'wojewodztwo']
 
     filename = str(req_dict[FILENAME_FIELD][0])
     if filename is None or len(filename) == 0:
@@ -434,7 +438,7 @@ def generate_file(req):
     elif filetype == 'xml':
         filename += '.xml'
         filepath = settings.MEDIA_ROOT + os.sep + filename
-        generate_xml_file(filepath, result, [])
+        generate_xml_file(filepath, result, rek_struktura, ilosc)
 
     else:
         filename += '.txt'
