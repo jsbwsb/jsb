@@ -579,7 +579,7 @@ def generate_file(req):
         f.write(str(ulica)+'\n')
         f.write(str(kod)+'\n')
         f.write(str(nrdomu)+'\n')
-        f.write(str(struktura_pom)+'\n')
+        f.write(str(struktura)+'\n')
         f.close()
 
 
