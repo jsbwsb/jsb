@@ -504,9 +504,9 @@ def generate_file(req):
     if ulica >= 0:
         struktura_pom[ulica] = 'ulica'
 
-    struktura = []
+    rek_struktura = []
     for key in sorted(struktura_pom):
-        struktura.append(struktura_pom[key])
+        rek_struktura.append(struktura_pom[key])
 
 
 
@@ -536,9 +536,6 @@ def generate_file(req):
         cursor.execute("SELECT id, nazwa from generator_wojset; ")
 
         result = cursor.fetchall()
-
-
-    rek_struktura = ['id', 'wojewodztwo']
 
     filename = str(req_dict[FILENAME_FIELD][0])
     if filename is None or len(filename) == 0:
