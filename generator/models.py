@@ -358,6 +358,8 @@ def generate_xml_file(filepath, data, structure=[], number=100):
 
 def generate_sql_file(filepath, data, structure=[], number=100):
 
+    if os.path.isfile(filepath):
+        os.remove(filepath)
     try:
         conn = sqlite3.connect(filepath)
         c = conn.cursor()
