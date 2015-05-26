@@ -482,27 +482,31 @@ def generate_file(req):
         filetype = 'txt'
 
     #wygenerowanie struktury wyjsciowej
-    struktura = {}
+    struktura_pom = {}
 
     if wojewodztwa[0] >= 0:
-        struktura[wojewodztwa[0]] = 'wojewodztwo'
+        struktura_pom[wojewodztwa[0]] = 'wojewodztwo'
     if powiaty[0] >= 0:
-        struktura[powiaty[0]] = 'powiat'
+        struktura_pom[powiaty[0]] = 'powiat'
 
     if gminy[0] >= 0:
-        struktura[gminy[0]] = 'gmina'
+        struktura_pom[gminy[0]] = 'gmina'
 
     if miejscowosci[0] >= 0:
-        struktura[miejscowosci[0]] = 'miejscowosc'
+        struktura_pom[miejscowosci[0]] = 'miejscowosc'
 
     if kod >= 0:
-        struktura[kod] = 'kod pocztowy'
+        struktura_pom[kod] = 'kod pocztowy'
 
     if nrdomu >= 0:
-        struktura[nrdomu] = 'nr domu'
+        struktura_pom[nrdomu] = 'nr domu'
 
     if ulica >= 0:
-        struktura[ulica] = 'ulica'
+        struktura_pom[ulica] = 'ulica'
+
+    struktura = []
+    for key in sorted(struktura_pom):
+        struktura.append(struktura_pom[key])
 
 
 
@@ -575,7 +579,7 @@ def generate_file(req):
         f.write(str(ulica)+'\n')
         f.write(str(kod)+'\n')
         f.write(str(nrdomu)+'\n')
-        f.write(str(struktura)+'\n')
+        f.write(str(struktura_pom)+'\n')
         f.close()
 
 
