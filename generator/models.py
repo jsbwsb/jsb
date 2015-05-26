@@ -313,27 +313,29 @@ def generate_csv_file(filepath, data, number=100):
 
 def generate_xml_file(filepath, data, structure = []):
 
-    if len(structure) != len(data[0]):
-        structure = []
-        for i in range(len(len(data[0]))):
-            structure.append('field_%d' % i)
-
     f = open(filepath, 'w')
-    f.write(str(structure))
 
-    for record in data:
-        # create XML
-        rec = etree.Element('record')
-        d = etree.Element('dane')
-        d.text = unicode(record[0])
+    if len(data) > 0:
+        if len(structure) != len(data[0]):
+            structure = []
+            for i in range(len(len(data[0]))):
+                structure.append('field_%d' % i)
 
-        rec.append(d)
+        #tste
+        f.write(str(structure))
 
-        # pretty string
-        s = etree.tostring(rec, pretty_print=True)
+        for record in data:
+            # create XML
+            rec = etree.Element('record')
+            d = etree.Element('dane')
+            d.text = unicode(record[0])
 
-        f.write(s)
+            rec.append(d)
 
+            # pretty string
+            s = etree.tostring(rec, pretty_print=True)
+
+            f.write(s)
 
     f.close()
 
