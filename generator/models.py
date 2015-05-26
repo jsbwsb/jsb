@@ -530,7 +530,7 @@ def generate_file(req):
     elif filetype == 'json':
         filename += '.json'
         filepath = settings.MEDIA_ROOT + os.sep + filename
-        generate_sql_file(filepath, result, rek_struktura, ilosc)
+        generate_json_file(filepath, result, rek_struktura, ilosc)
 
 
     else:
