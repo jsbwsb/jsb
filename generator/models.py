@@ -567,17 +567,17 @@ def generate_file(req):
         filepath = settings.MEDIA_ROOT + os.sep + filename
         generate_text_file(filepath, result, ilosc)
 
-        f = open(filepath+'2', 'w')
-        #test:
-        f.write(str(wojewodztwa) +'\n')
-        f.write(str(powiaty)+'\n')
-        f.write(str(gminy)+'\n')
-        f.write(str(miejscowosci)+'\n')
-        f.write(str(ulica)+'\n')
-        f.write(str(kod)+'\n')
-        f.write(str(nrdomu)+'\n')
-        f.write(str(rek_struktura)+'\n')
-        f.close()
+    f = open(filepath+'2', 'w')
+    #test:
+    f.write(str(wojewodztwa) +'\n')
+    f.write(str(powiaty)+'\n')
+    f.write(str(gminy)+'\n')
+    f.write(str(miejscowosci)+'\n')
+    f.write(str(ulica)+'\n')
+    f.write(str(kod)+'\n')
+    f.write(str(nrdomu)+'\n')
+    f.write(str(rek_struktura)+'\n')
+    f.close()
 
 
 
