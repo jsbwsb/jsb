@@ -10,8 +10,9 @@ import mysql.connector
 from mysql.connector import errorcode
 
 import sqlite3
-
+import json
 from lxml import etree
+
 
 
 
@@ -406,7 +407,36 @@ def generate_sql_file(filepath, data, structure=[], number=100):
     # Just be sure any changes have been committed or they will be lost.
     conn.close()
 
+def generate_json_file(filepath, data, structure=[], number=100):
 
+    f = open(filepath, 'w')
+
+    if len(data) > 0:
+
+        count = 0
+        if len(structure) != len(data[0]):
+            structure = []
+            for i in range(len(data[0])):
+                structure.append('field_%d' % i)
+
+        records = []
+
+
+        for rec in data:
+            d = {}
+            for i in range(len(rec)):
+                d[structure[i]] = rec[i]
+
+            records.append(d)
+            count += 1
+
+            if count >= number:
+                break
+
+        f.write(json.dumps(records))
+
+
+    f.close()
 
 def generate_file(req):
 
@@ -496,6 +526,12 @@ def generate_file(req):
         filename += '.sqlite3'
         filepath = settings.MEDIA_ROOT + os.sep + filename
         generate_sql_file(filepath, result, rek_struktura, ilosc)
+
+    elif filetype == 'json':
+        filename += '.json'
+        filepath = settings.MEDIA_ROOT + os.sep + filename
+        generate_sql_file(filepath, result, rek_struktura, ilosc)
+
 
     else:
         filename += '.txt'
