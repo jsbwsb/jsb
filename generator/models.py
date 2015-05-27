@@ -484,22 +484,70 @@ def generate_file(req):
     #wygenerowanie struktury wyjsciowej
     struktura_pom = {}
     pola_mysql_pom = {}
-    where_mysql_txt = ''
+    where_mysql_txt = []
 
     if wojewodztwa[0] >= 0:
         struktura_pom[wojewodztwa[0]] = 'wojewodztwo'
         pola_mysql_pom[wojewodztwa[0]] = 'w.nazwa as wojewodztwo'
 
+
+    #wojewodzctwa
+    where_mysql_txt_pom = ''
     if len(wojewodztwa) == 2 and len(wojewodztwa[1]) > 0 and wojewodztwa[1] != 'Wszystkie':
-        where_mysql_txt += 'w.nazwa in ('
+        where_mysql_txt_pom += 'w.nazwa in ('
         for i in range(len(wojewodztwa[1])):
             if i < len(wojewodztwa[1])-1:
-                where_mysql_txt += '"%s", ' % unicode(wojewodztwa[1][i]).encode('utf-8')
+                where_mysql_txt_pom += '"%s", ' % unicode(wojewodztwa[1][i]).encode('utf-8')
             else:
-                where_mysql_txt += '"%s"' % unicode(wojewodztwa[1][i]).encode('utf-8')
+                where_mysql_txt_pom += '"%s"' % unicode(wojewodztwa[1][i]).encode('utf-8')
 
-        where_mysql_txt += ')'
+        where_mysql_txt_pom += ')'
 
+    where_mysql_txt.append(where_mysql_txt_pom)
+
+    #powiaty
+    where_mysql_txt_pom = ''
+    if len(powiaty) == 2 and len(powiaty[1]) > 0 and powiaty[1] != 'Wszystkie':
+        where_mysql_txt_pom += 'p.nazwa in ('
+        for i in range(len(powiaty[1])):
+            if i < len(powiaty[1])-1:
+                where_mysql_txt_pom += '"%s", ' % unicode(powiaty[1][i]).encode('utf-8')
+            else:
+                where_mysql_txt_pom += '"%s"' % unicode(powiaty[1][i]).encode('utf-8')
+
+        where_mysql_txt_pom += ')'
+
+    where_mysql_txt.append(where_mysql_txt_pom)
+
+    #gminy
+    where_mysql_txt_pom = ''
+    if len(gminy) == 2 and len(gminy[1]) > 0 and gminy[1] != 'Wszystkie':
+        where_mysql_txt_pom += 'g.nazwa in ('
+        for i in range(len(gminy[1])):
+            if i < len(gminy[1])-1:
+                where_mysql_txt_pom += '"%s", ' % unicode(gminy[1][i]).encode('utf-8')
+            else:
+                where_mysql_txt_pom += '"%s"' % unicode(gminy[1][i]).encode('utf-8')
+
+        where_mysql_txt_pom += ')'
+
+    #miejscowosci
+    where_mysql_txt_pom = ''
+    if len(miejscowosci) == 2 and len(miejscowosci[1]) > 0 and miejscowosci[1] != 'Wszystkie':
+        where_mysql_txt_pom += 'miej.nazwa in ('
+        for i in range(len(miejscowosci[1])):
+            if i < len(miejscowosci[1])-1:
+                where_mysql_txt_pom += '"%s", ' % unicode(miejscowosci[1][i]).encode('utf-8')
+            else:
+                where_mysql_txt_pom += '"%s"' % unicode(miejscowosci[1][i]).encode('utf-8')
+
+        where_mysql_txt_pom += ')'
+
+    where_mysql_txt.append(where_mysql_txt_pom)
+
+    where_mysql = ''
+    if len(where_mysql_txt) > 0:
+        where_mysql = 'where '+ ', '.where_mysql_txt
 
     if powiaty[0] >= 0:
         struktura_pom[powiaty[0]] = 'powiat'
@@ -609,6 +657,7 @@ def generate_file(req):
     f.write(pola_mysql_txt +'\n')
     f.write(zapytanie_mysql +'\n')
     f.write(where_mysql_txt +'\n')
+    f.write(where_mysql +'\n')
     f.close()
 
 
