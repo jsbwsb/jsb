@@ -519,7 +519,8 @@ def generate_file(req):
     pola_mysql = []
     for key in sorted(struktura_pom):
         rek_struktura.append(struktura_pom[key])
-        pola_mysql.append(pola_mysql_pom[key])
+        if key in pola_mysql_pom:
+            pola_mysql.append(pola_mysql_pom[key])
 
     pola_mysql_txt = ', '.join(pola_mysql)
 
