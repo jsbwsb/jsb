@@ -493,7 +493,7 @@ def generate_file(req):
 
     #wojewodzctwa
     where_mysql_txt_pom = ''
-    if len(wojewodztwa) == 2 and len(wojewodztwa[1]) > 0 and wojewodztwa[1] not in unicode('Wszystkie'):
+    if len(wojewodztwa) == 2 and len(wojewodztwa[1]) > 0 and wojewodztwa[1][0] not in unicode('Wszystkie'):
         where_mysql_txt_pom += 'w.nazwa in ('
         for i in range(len(wojewodztwa[1])):
             if i < len(wojewodztwa[1])-1:
@@ -507,7 +507,7 @@ def generate_file(req):
 
     #powiaty
     where_mysql_txt_pom = ''
-    if len(powiaty) == 2 and len(powiaty[1]) > 0 and powiaty[1] not in unicode('Wszystkie'):
+    if len(powiaty) == 2 and len(powiaty[1]) > 0 and powiaty[1][0] not in unicode('Wszystkie'):
         where_mysql_txt_pom += 'p.nazwa in ('
         for i in range(len(powiaty[1])):
             if i < len(powiaty[1])-1:
@@ -521,7 +521,7 @@ def generate_file(req):
 
     #gminy
     where_mysql_txt_pom = ''
-    if len(gminy) == 2 and len(gminy[1]) > 0 and gminy[1] not in unicode('Wszystkie'):
+    if len(gminy) == 2 and len(gminy[1]) > 0 and gminy[1][0] not in unicode('Wszystkie'):
         where_mysql_txt_pom += 'g.nazwa in ('
         for i in range(len(gminy[1])):
             if i < len(gminy[1])-1:
@@ -533,7 +533,7 @@ def generate_file(req):
 
     #miejscowosci
     where_mysql_txt_pom = ''
-    if len(miejscowosci) == 2 and len(miejscowosci[1]) > 0 and miejscowosci[1] not in unicode('Wszystkie'):
+    if len(miejscowosci) == 2 and len(miejscowosci[1]) > 0 and miejscowosci[1][0] not in unicode('Wszystkie'):
         where_mysql_txt_pom += 'miej.nazwa in ('
         for i in range(len(miejscowosci[1])):
             if i < len(miejscowosci[1])-1:
