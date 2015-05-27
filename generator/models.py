@@ -504,7 +504,7 @@ def generate_file(req):
 
     if kod >= 0:
         struktura_pom[kod] = 'kod_pocztowy'
-        pola_mysql_pom[kod] = 'kod_pocztowy'
+        pola_mysql_pom[kod] = 'kod as kod_pocztowy'
 
     if nrdomu >= 0:
         struktura_pom[nrdomu] = 'nr_domu'
