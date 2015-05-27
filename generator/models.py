@@ -509,7 +509,7 @@ def generate_file(req):
 
     if nrdomu >= 0:
         struktura_pom[nrdomu] = 'nr_domu'
-        pola_mysql_pom[nrdomu] = 'nr_domu'
+        pola_mysql_pom[nrdomu] = ''
 
     if ulica >= 0:
         struktura_pom[ulica] = 'ulica'
