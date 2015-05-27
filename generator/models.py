@@ -553,7 +553,7 @@ def generate_file(req):
 
     where_mysql = ''
     if len(where_mysql_txt) > 0:
-        where_mysql ='WHERE ' + ' AND '.join(where_mysql_txt)
+        where_mysql ='WHERE ' + '\nAND '.join(where_mysql_txt)
 
 
 
