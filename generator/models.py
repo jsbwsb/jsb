@@ -484,11 +484,16 @@ def generate_file(req):
     #wygenerowanie struktury wyjsciowej
     struktura_pom = {}
     pola_mysql_pom = {}
+    where_mysql_txt = ''
 
     if wojewodztwa[0] >= 0:
         struktura_pom[wojewodztwa[0]] = 'wojewodztwo'
         pola_mysql_pom[wojewodztwa[0]] = 'w.nazwa as wojewodztwo'
 
+    if len(wojewodztwa) == 2 and len(wojewodztwa[1]) > 0 and wojewodztwa[1] != 'Wszystkie':
+        where_mysql_txt += 'w.nazwa in ('
+        where_mysql_txt += ', '.join(wojewodztwa[1])
+        where_mysql_txt += ')'
 
 
     if powiaty[0] >= 0:
@@ -523,6 +528,12 @@ def generate_file(req):
             pola_mysql.append(pola_mysql_pom[key])
 
     pola_mysql_txt = ', '.join(pola_mysql)
+
+    zapytanie_mysql = 'SELECT %s rom generator_adresset a ' \
+                      'join generator_miejset miej on miej.id = a.miej_id ' \
+                      'join generator_gmset g on g.id = miej.gm_id ' \
+                      'join generator_powset p on p.id = g.pow_id ' \
+                      'join generator_wojset w on w.id = p.woj_id' % pola_mysql_txt
 
 
     try:
@@ -591,6 +602,8 @@ def generate_file(req):
     f.write(str(nrdomu)+'\n')
     f.write(str(rek_struktura)+'\n')
     f.write(pola_mysql_txt +'\n')
+    f.write(zapytanie_mysql +'\n')
+    f.write(where_mysql_txt +'\n')
     f.close()
 
 
