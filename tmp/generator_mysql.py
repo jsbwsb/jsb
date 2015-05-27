@@ -110,8 +110,10 @@ else:
 
             result = cursor.fetchall()
 
-
-            gm[line_list[GM_FIELD_INDEX]] = int(result[0][0])
+            if len(result) > 0:
+                gm[line_list[GM_FIELD_INDEX]] = int(result[0][0])
+            else:
+                gm[line_list[GM_FIELD_INDEX]] = 1
 
         gmID = gm[line_list[GM_FIELD_INDEX]]
 
