@@ -553,7 +553,9 @@ def generate_file(req):
 
     where_mysql = ''
     if len(where_mysql_txt) > 0:
-        where_mysql ='where ' + ', '.join(where_mysql_txt)
+        where_mysql ='where ' + ' AND '.join(where_mysql_txt)
+
+
 
     if powiaty[0] >= 0:
         struktura_pom[powiaty[0]] = 'powiat'
@@ -589,10 +591,11 @@ def generate_file(req):
     pola_mysql_txt = ', '.join(pola_mysql)
 
     zapytanie_mysql = 'SELECT %s from generator_adresset a ' \
-                      '\njoin generator_miejset miej on miej.id = a.miej_id ' \
-                      '\njoin generator_gmset g on g.id = miej.gm_id ' \
-                      '\njoin generator_powset p on p.id = g.pow_id ' \
-                      '\njoin generator_wojset w on w.id = p.woj_id' % pola_mysql_txt
+                      '\nJOIN generator_miejset miej on miej.id = a.miej_id ' \
+                      '\nJOIN generator_gmset g on g.id = miej.gm_id ' \
+                      '\nJOIN generator_powset p on p.id = g.pow_id ' \
+                      '\nJOIN generator_wojset w on w.id = p.woj_id' \
+                      '\n%s LIMIT %d' % (pola_mysql_txt, where_mysql, ilosc)
 
 
     try:
