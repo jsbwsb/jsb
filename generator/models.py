@@ -665,8 +665,6 @@ def generate_file(req):
     f.write(str(rek_struktura)+'\n')
     f.write(pola_mysql_txt +'\n')
     f.write(zapytanie_mysql +'\n')
-    f.write(str(where_mysql_txt) +'\n')
-    f.write(where_mysql +'\n')
     f.close()
 
 
