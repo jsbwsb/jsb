@@ -619,7 +619,7 @@ def generate_file(req):
         # prepare a cursor object using cursor() method
         cursor = db.cursor()
 
-        cursor.execute("SELECT id, nazwa from generator_wojset; ")
+        cursor.execute(zapytanie_mysql)
 
         result = cursor.fetchall()
 
