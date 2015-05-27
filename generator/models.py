@@ -483,33 +483,44 @@ def generate_file(req):
 
     #wygenerowanie struktury wyjsciowej
     struktura_pom = {}
+    pola_mysql_pom = {}
 
     if wojewodztwa[0] >= 0:
         struktura_pom[wojewodztwa[0]] = 'wojewodztwo'
+        pola_mysql_pom[wojewodztwa[0]] = 'w.nazwa as wojewodztwo'
+
+
     if powiaty[0] >= 0:
         struktura_pom[powiaty[0]] = 'powiat'
+        pola_mysql_pom[powiaty[0]] = 'p.nazwa as powiat'
 
     if gminy[0] >= 0:
         struktura_pom[gminy[0]] = 'gmina'
+        pola_mysql_pom[gminy[0]] = 'g.nazwa as gmina'
 
     if miejscowosci[0] >= 0:
         struktura_pom[miejscowosci[0]] = 'miejscowosc'
+        pola_mysql_pom[miejscowosci[0]] = 'miej.nazwa as miejscowosc'
 
     if kod >= 0:
         struktura_pom[kod] = 'kod_pocztowy'
+        pola_mysql_pom[kod] = 'kod_pocztowy'
 
     if nrdomu >= 0:
         struktura_pom[nrdomu] = 'nr_domu'
+        pola_mysql_pom[nrdomu] = 'nr_domu'
 
     if ulica >= 0:
         struktura_pom[ulica] = 'ulica'
+        pola_mysql_pom[ulica] = 'ulica'
 
     rek_struktura = []
+    pola_mysql = []
     for key in sorted(struktura_pom):
         rek_struktura.append(struktura_pom[key])
+        pola_mysql.append(pola_mysql_pom[key])
 
-
-
+    pola_mysql_txt = ', '.join(pola_mysql)
 
 
     try:
@@ -577,6 +588,7 @@ def generate_file(req):
     f.write(str(kod)+'\n')
     f.write(str(nrdomu)+'\n')
     f.write(str(rek_struktura)+'\n')
+    f.write(pola_mysql_txt +'\n')
     f.close()
 
 
