@@ -547,7 +547,7 @@ def generate_file(req):
 
     where_mysql = ''
     if len(where_mysql_txt) > 0:
-        where_mysql = 'where '+ ', '.join(where_mysql_txt)
+        where_mysql ='where ' + ', '.join(where_mysql_txt)
 
     if powiaty[0] >= 0:
         struktura_pom[powiaty[0]] = 'powiat'
@@ -656,7 +656,7 @@ def generate_file(req):
     f.write(str(rek_struktura)+'\n')
     f.write(pola_mysql_txt +'\n')
     f.write(zapytanie_mysql +'\n')
-    f.write(where_mysql_txt +'\n')
+    f.write(str(where_mysql_txt) +'\n')
     f.write(where_mysql +'\n')
     f.close()
 
