@@ -553,7 +553,7 @@ def generate_file(req):
 
     where_mysql = ''
     if len(where_mysql_txt) > 0:
-        where_mysql ='where ' + ' AND '.join(where_mysql_txt)
+        where_mysql ='WHERE ' + ' AND '.join(where_mysql_txt)
 
 
 
@@ -595,7 +595,7 @@ def generate_file(req):
                       '\nJOIN generator_gmset g on g.id = miej.gm_id ' \
                       '\nJOIN generator_powset p on p.id = g.pow_id ' \
                       '\nJOIN generator_wojset w on w.id = p.woj_id' \
-                      '\n%s LIMIT %d' % (pola_mysql_txt, where_mysql, ilosc)
+                      '\n%s LIMIT %d;' % (pola_mysql_txt, where_mysql, ilosc)
 
 
     try:
