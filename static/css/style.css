@@ -62,6 +62,7 @@ input[type=button] {
 	font-size: 18px;
 	color: white;
 }
+#logo a, #logo a:visited, #logo a:active { color: white; text-decoration: none; }
 
 #redSpace {
 	background-color: #fa0404;
