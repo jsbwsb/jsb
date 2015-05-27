@@ -495,7 +495,7 @@ def generate_file(req):
         for i in range(len(wojewodztwa[1])):
             if i < len(wojewodztwa[1])-1:
                 where_mysql_txt += '"%s", ' % wojewodztwa[1]
-            else
+            else:
                 where_mysql_txt += '"%s"' % wojewodztwa[1]
 
         where_mysql_txt += ')'
