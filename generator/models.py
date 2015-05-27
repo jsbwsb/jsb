@@ -492,7 +492,12 @@ def generate_file(req):
 
     if len(wojewodztwa) == 2 and len(wojewodztwa[1]) > 0 and wojewodztwa[1] != 'Wszystkie':
         where_mysql_txt += 'w.nazwa in ('
-        where_mysql_txt += ', '.join(wojewodztwa[1])
+        for i in range(len(wojewodztwa[1])):
+            if i < len(wojewodztwa[1])-1:
+                where_mysql_txt += '"%s", ' % wojewodztwa[1]
+            else
+                where_mysql_txt += '"%s"' % wojewodztwa[1]
+
         where_mysql_txt += ')'
 
 
@@ -529,7 +534,7 @@ def generate_file(req):
 
     pola_mysql_txt = ', '.join(pola_mysql)
 
-    zapytanie_mysql = 'SELECT %s rom generator_adresset a ' \
+    zapytanie_mysql = 'SELECT %s from generator_adresset a ' \
                       'join generator_miejset miej on miej.id = a.miej_id ' \
                       'join generator_gmset g on g.id = miej.gm_id ' \
                       'join generator_powset p on p.id = g.pow_id ' \
