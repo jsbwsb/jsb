@@ -503,8 +503,8 @@ def generate_file(req):
 
         where_mysql_txt_pom += ')'
 
-    where_mysql_txt.append(where_mysql_txt_pom)
-
+    if len(where_mysql_txt_pom) > 0:
+        where_mysql_txt.append(where_mysql_txt_pom)
     #powiaty
     where_mysql_txt_pom = ''
     if len(powiaty) == 2 and len(powiaty[1]) > 0 and powiaty[1][0] not in unicode('Wszystkie'):
@@ -517,7 +517,9 @@ def generate_file(req):
 
         where_mysql_txt_pom += ')'
 
-    where_mysql_txt.append(where_mysql_txt_pom)
+
+    if len(where_mysql_txt_pom) > 0:
+        where_mysql_txt.append(where_mysql_txt_pom)
 
     #gminy
     where_mysql_txt_pom = ''
@@ -531,6 +533,9 @@ def generate_file(req):
 
         where_mysql_txt_pom += ')'
 
+    if len(where_mysql_txt_pom) > 0:
+        where_mysql_txt.append(where_mysql_txt_pom)
+
     #miejscowosci
     where_mysql_txt_pom = ''
     if len(miejscowosci) == 2 and len(miejscowosci[1]) > 0 and miejscowosci[1][0] not in unicode('Wszystkie'):
@@ -543,7 +548,8 @@ def generate_file(req):
 
         where_mysql_txt_pom += ')'
 
-    where_mysql_txt.append(where_mysql_txt_pom)
+    if len(where_mysql_txt_pom) > 0:
+        where_mysql_txt.append(where_mysql_txt_pom)
 
     where_mysql = ''
     if len(where_mysql_txt) > 0:
