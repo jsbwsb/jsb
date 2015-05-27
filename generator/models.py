@@ -535,10 +535,10 @@ def generate_file(req):
     pola_mysql_txt = ', '.join(pola_mysql)
 
     zapytanie_mysql = 'SELECT %s from generator_adresset a ' \
-                      'join generator_miejset miej on miej.id = a.miej_id ' \
-                      'join generator_gmset g on g.id = miej.gm_id ' \
-                      'join generator_powset p on p.id = g.pow_id ' \
-                      'join generator_wojset w on w.id = p.woj_id' % pola_mysql_txt
+                      '\njoin generator_miejset miej on miej.id = a.miej_id ' \
+                      '\njoin generator_gmset g on g.id = miej.gm_id ' \
+                      '\njoin generator_powset p on p.id = g.pow_id ' \
+                      '\njoin generator_wojset w on w.id = p.woj_id' % pola_mysql_txt
 
 
     try:
