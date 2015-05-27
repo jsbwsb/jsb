@@ -490,6 +490,7 @@ def generate_file(req):
         pola_mysql_pom[wojewodztwa[0]] = 'w.nazwa as wojewodztwo'
 
 
+
     if powiaty[0] >= 0:
         struktura_pom[powiaty[0]] = 'powiat'
         pola_mysql_pom[powiaty[0]] = 'p.nazwa as powiat'
