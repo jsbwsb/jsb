@@ -5,7 +5,7 @@ from mysql.connector import errorcode
 
 #addresses data file
 DATA_FILE = 'przerobione_pna.txt'
-NUMBER_OF_ROWS = 1000
+NUMBER_OF_ROWS = 1000000
 
 #indexes of the fields in data file
 WOJ_FIELD_INDEX = 6
