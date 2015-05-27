@@ -494,9 +494,9 @@ def generate_file(req):
         where_mysql_txt += 'w.nazwa in ('
         for i in range(len(wojewodztwa[1])):
             if i < len(wojewodztwa[1])-1:
-                where_mysql_txt += '"%s", ' % unicode(wojewodztwa[1][i])
+                where_mysql_txt += '"%s", ' % unicode(wojewodztwa[1][i]).encode('utf-8')
             else:
-                where_mysql_txt += '"%s"' % unicode(wojewodztwa[1][i])
+                where_mysql_txt += '"%s"' % unicode(wojewodztwa[1][i]).encode('utf-8')
 
         where_mysql_txt += ')'
 
