@@ -619,7 +619,7 @@ def generate_file(req):
 
         count = 0
         result_nr_domu = []
-        index_nr_domu = rek_struktura.index('nr_donu')
+        index_nr_domu = rek_struktura.index('nr_domu')
         '''
         for r in result:
             max_nr_domu = random.randint(1000)
