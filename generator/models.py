@@ -624,7 +624,11 @@ def generate_file(req):
         for r in result:
             max_nr_domu = random.randint(1, 1000)
             delta_nr_domu = random.randint(1, 4) + 1
-            r.insert(index_nr_domu, 10)
+            rr = list(r)
+            rr.insert(index_nr_domu, 10)
+            result_nr_domu.append(rr)
+
+        result = result_nr_domu
 
 
 
