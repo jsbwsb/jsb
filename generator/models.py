@@ -11,18 +11,13 @@ from mysql.connector import errorcode
 
 import sqlite3
 import json
+import random
 from lxml import etree
-
-
-
-
-
-FILENAME_FIELD = 'file_name'
-WOJ_FIELD = 'woj'
 
 #Tabela wojewodztwa
 class WojSet(Model):
     nazwa = CharField(max_length=60, verbose_name="Nazwa województwa")
+
 
     @staticmethod
     def choose_woj():
@@ -555,8 +550,6 @@ def generate_file(req):
     if len(where_mysql_txt) > 0:
         where_mysql ='WHERE ' + '\nAND '.join(where_mysql_txt)
 
-
-
     if powiaty[0] >= 0:
         struktura_pom[powiaty[0]] = 'powiat'
         pola_mysql_pom[powiaty[0]] = 'p.nazwa as powiat'
@@ -575,7 +568,6 @@ def generate_file(req):
 
     if nrdomu >= 0:
         struktura_pom[nrdomu] = 'nr_domu'
-
 
     if ulica >= 0:
         struktura_pom[ulica] = 'ulica'
@@ -623,7 +615,19 @@ def generate_file(req):
 
         result = cursor.fetchall()
 
-    filename = str(req_dict[FILENAME_FIELD][0])
+    if 'nr_domu' in rek_struktura:
+
+        count = 0
+        result_nr_domu = []
+        index_nr_domu = rek_struktura.index('nr_donu')
+        '''
+        for r in result:
+            max_nr_domu = random.randint(1000)
+            delta_nr_domu = random.randint(4) + 1
+        '''
+
+
+    filename = str(req_dict['file_name'][0])
     if filename is None or len(filename) == 0:
         filename = 'output'
 
@@ -665,6 +669,10 @@ def generate_file(req):
     f.write(str(rek_struktura)+'\n')
     f.write(pola_mysql_txt +'\n')
     f.write(zapytanie_mysql +'\n')
+    f.write(str(index_nr_domu) +'\n')
+    f.write(str(result) +'\n')
+    f.write(str(result[:result_nr_domu]) +'\n')
+    f.write(str(result[result_nr_domu+1:]) +'\n')
     f.close()
 
 
