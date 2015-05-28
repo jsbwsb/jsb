@@ -18,7 +18,6 @@ from lxml import etree
 class WojSet(Model):
     nazwa = CharField(max_length=60, verbose_name="Nazwa województwa")
 
-
     @staticmethod
     def choose_woj():
 
@@ -76,7 +75,6 @@ class MiejSet(Model):
     @staticmethod
     def choose_miej(req):
 
-
         gms = req[2][1]
 
         if gms[0] == u'Wszystkie':
@@ -104,7 +102,6 @@ class MiejSet(Model):
 
             gm_ids = GmSet.objects.filter(nazwa__in=gms).values_list('id', flat=True)
             m_set = MiejSet.objects.filter(gm__in=gm_ids).values_list('nazwa', flat=True)
-
 
         return m_set
 
@@ -136,7 +133,6 @@ def convert_to_unicode(word):
         word = word.replace(rem, unichr(int(rem[1:5], 16)))
     return word
 
-
 def str_to_list(strlist):
     ret = []
 
@@ -165,7 +161,6 @@ def str_to_list(strlist):
             ret = pom
 
     return ret
-
 
 
 def get_option_value(req, step):
@@ -203,7 +198,6 @@ def get_option_value(req, step):
 
         data_list = [options_list]
 
-
         ppom=[-1]
         if req_dict.has_key('pow_on_off') and req_dict.has_key('pow_order'):
             if req_dict['pow_order'][0].lstrip("-+").isdigit():
@@ -220,7 +214,6 @@ def get_option_value(req, step):
             ppom.append([u'Wszystkie'])
 
         data_list.append(ppom)
-
 
         ret = data_list
 
@@ -282,13 +275,11 @@ def get_option_value(req, step):
 
         ret = data_list
 
-
     return ret
 
 def generate_text_file(filepath, data, number=100, separator='|'):
 
     f = open(filepath, 'w')
-
 
     count = 0
     for record in data:
@@ -350,8 +341,6 @@ def generate_xml_file(filepath, data, structure=[], number=100):
         s = etree.tostring(root, pretty_print=True)
         f.write(s)
 
-
-
     f.close()
 
 def generate_sql_file(filepath, data, structure=[], number=100):
@@ -394,7 +383,6 @@ def generate_sql_file(filepath, data, structure=[], number=100):
             # Save (commit) the changes
             conn.commit()
 
-
             count += 1
 
             if count >= number:
@@ -418,7 +406,6 @@ def generate_json_file(filepath, data, structure=[], number=100):
 
         records = []
 
-
         for rec in data:
             d = {}
             for i in range(len(rec)):
@@ -432,7 +419,6 @@ def generate_json_file(filepath, data, structure=[], number=100):
 
         f.write(json.dumps(records))
 
-
     f.close()
 
 def generate_file(req):
@@ -443,7 +429,6 @@ def generate_file(req):
         options_list = str_to_list(req_dict['options'][0])
     else:
         options_list = [[-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']], [-1, [u'Wszystkie']]]
-
 
     wojewodztwa = options_list[0]
     powiaty = options_list[1]
@@ -465,7 +450,6 @@ def generate_file(req):
     else:
         kod = -1
 
-
     if 'ilosc' in req_dict and req_dict['ilosc'][0].lstrip("-+").isdigit():
         ilosc = int(req_dict['ilosc'][0])
     else:
@@ -484,7 +468,6 @@ def generate_file(req):
     if wojewodztwa[0] >= 0:
         struktura_pom[wojewodztwa[0]] = 'wojewodztwo'
         pola_mysql_pom[wojewodztwa[0]] = 'w.nazwa as wojewodztwo'
-
 
     #wojewodzctwa
     where_mysql_txt_pom = ''
@@ -589,14 +572,12 @@ def generate_file(req):
                       '\nJOIN generator_wojset w on w.id = p.woj_id' \
                       '\n%s LIMIT %d;' % (pola_mysql_txt, where_mysql, ilosc)
 
-
     try:
         db = mysql.connector.connect(host='mysql.server',
                                     port=3306,
                                     user='jsb',
                                     password='Testerki@1',
                                     database='jsb$ADRESY')
-
 
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -606,7 +587,6 @@ def generate_file(req):
         else:
             print(err)
     else:
-
 
         # prepare a cursor object using cursor() method
         cursor = db.cursor()
@@ -633,8 +613,6 @@ def generate_file(req):
 
         result = result_nr_domu
 
-
-
     filename = str(req_dict['file_name'][0])
     if filename is None or len(filename) == 0:
         filename = 'output'
@@ -659,12 +637,11 @@ def generate_file(req):
         filepath = settings.MEDIA_ROOT + os.sep + filename
         generate_json_file(filepath, result, rek_struktura, ilosc)
 
-
     else:
         filename += '.txt'
         filepath = settings.MEDIA_ROOT + os.sep + filename
         generate_text_file(filepath, result, ilosc)
-
+    '''
     f = open(filepath+'2', 'w')
     #test:
     f.write(str(wojewodztwa) +'\n')
@@ -686,7 +663,7 @@ def generate_file(req):
     f.write(str(delta_nr_domu) +'\n')
     f.close()
 
-
+    '''
 
     return str(filename)
 
