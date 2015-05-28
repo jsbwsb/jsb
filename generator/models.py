@@ -620,8 +620,8 @@ def generate_file(req):
         count = 0
         result_nr_domu = []
         index_nr_domu = rek_struktura.index('nr_domu')
-        max_nr_domu = random.randint(1000)
-        delta_nr_domu = random.randint(4) + 1
+        max_nr_domu = random.randint(1, 1000)
+        delta_nr_domu = random.randint(1, 4) + 1
         '''
         for r in result:
             max_nr_domu = random.randint(1000)
