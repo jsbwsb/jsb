@@ -676,8 +676,8 @@ def generate_file(req):
     f.write(str(result[0][:int(index_nr_domu)-1]) +'\n')
     f.write(str(result[0][int(index_nr_domu):]) +'\n')
 
-    #f.write(str(max_nr_domu) +'\n')
-    #f.write(str(delta_nr_domu) +'\n')
+    f.write(str(max_nr_domu) +'\n')
+    f.write(str(delta_nr_domu) +'\n')
     f.close()
 
 
