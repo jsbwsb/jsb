@@ -620,6 +620,8 @@ def generate_file(req):
         count = 0
         result_nr_domu = []
         index_nr_domu = rek_struktura.index('nr_domu')
+        max_nr_domu = random.randint(1000)
+        delta_nr_domu = random.randint(4) + 1
         '''
         for r in result:
             max_nr_domu = random.randint(1000)
@@ -673,6 +675,8 @@ def generate_file(req):
     f.write(str(result) +'\n')
     f.write(str(result[:result_nr_domu]) +'\n')
     f.write(str(result[result_nr_domu+1:]) +'\n')
+    f.write(str(max_nr_domu) +'\n')
+    f.write(str(delta_nr_domu) +'\n')
     f.close()
 
 
