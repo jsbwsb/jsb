@@ -673,9 +673,8 @@ def generate_file(req):
     f.write(zapytanie_mysql +'\n')
     f.write(str(index_nr_domu) +'\n')
     f.write(str(result) +'\n')
-    f.write(str(index_nr_domu) +'\n')
-    #f.write(str(result[:index_nr_domu]) +'\n')
-    #f.write(str(result[index_nr_domu+1:]) +'\n')
+    f.write(str(result[:int(index_nr_domu)]) +'\n')
+    f.write(str(result[int(index_nr_domu)+1:]) +'\n')
 
     #f.write(str(max_nr_domu) +'\n')
     #f.write(str(delta_nr_domu) +'\n')
