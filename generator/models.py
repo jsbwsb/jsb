@@ -627,7 +627,7 @@ def generate_file(req):
             i = delta_nr_domu
             while i < max_nr_domu:
                 rr = list(r)
-                rr.insert(index_nr_domu, 10)
+                rr.insert(index_nr_domu, i)
                 result_nr_domu.append(rr)
                 i += delta_nr_domu
 
